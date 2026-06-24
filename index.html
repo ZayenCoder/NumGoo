@@ -18,393 +18,99 @@
             --hover-ghost: #f5f5f5;
             --bg-alpha: rgba(159, 232, 112, 0.32);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
+            background: var(--bg); color: var(--text); min-height: 100vh;
         }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            padding: 60px 20px 40px;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 8px;
-            color: var(--text);
-        }
-
-        .subtitle {
-            color: var(--text-secondary);
-            font-size: 1.2em;
-        }
-
-        /* Tabs */
-        .tabs {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
+        .container { max-width: 1280px; margin: 0 auto; padding: 20px; }
+        header { text-align: center; padding: 60px 20px 40px; }
+        h1 { font-size: 2.5em; margin-bottom: 8px; color: var(--text); }
+        .subtitle { color: var(--text-secondary); font-size: 1.2em; }
+        .tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 40px; flex-wrap: wrap; }
         .tab-btn {
-            padding: 12px 32px;
-            border-radius: 24px;
-            border: 1px solid var(--border);
-            background: var(--bg2);
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 500;
-            transition: all 0.3s;
-            color: var(--text);
+            padding: 12px 32px; border-radius: 24px; border: 1px solid var(--border);
+            background: var(--bg2); cursor: pointer; font-size: 16px; font-weight: 500;
+            transition: all 0.3s; color: var(--text);
         }
-
-        .tab-btn.active {
-            background: var(--primary);
-            border-color: var(--primary);
-            font-weight: 600;
-        }
-
-        .tab-btn:hover {
-            background: var(--hover-ghost);
-        }
-        .tab-btn.active:hover {
-            background: var(--primary-hover);
-        }
-
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Features */
-        .features {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-
-        .feature {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-grey);
-            font-size: 16px;
-        }
-
-        .feature svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        /* Search Section */
-        .search-section {
-            display: flex;
-            max-width: 553px;
-            margin: 0 auto 24px;
-            gap: 8px;
-            align-items: center;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .country-selector-wrapper {
-            position: relative;
-            flex: 1;
-            min-width: 250px;
-        }
-
+        .tab-btn.active { background: var(--primary); border-color: var(--primary); font-weight: 600; }
+        .tab-btn:hover { background: var(--hover-ghost); }
+        .tab-btn.active:hover { background: var(--primary-hover); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .features { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 40px; }
+        .feature { display: flex; align-items: center; gap: 8px; color: var(--text-grey); font-size: 16px; }
+        .feature svg { width: 20px; height: 20px; }
+        .search-section { display: flex; max-width: 600px; margin: 0 auto 24px; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: center; }
+        .country-selector-wrapper { position: relative; flex: 1; min-width: 250px; }
         .country-selector {
-            display: flex;
-            align-items: center;
-            padding: 12px 20px;
-            border-radius: 32px;
-            border: 1px solid var(--border);
-            background: #fff;
-            cursor: pointer;
-            width: 100%;
-            gap: 12px;
-            font-size: 16px;
-            height: 48px;
-            transition: all 0.2s;
+            display: flex; align-items: center; padding: 12px 20px; border-radius: 32px;
+            border: 1px solid var(--border); background: #fff; cursor: pointer;
+            width: 100%; gap: 12px; font-size: 16px; height: 48px; transition: all 0.2s;
         }
-
-        .country-selector:hover {
-            border-color: #ccc;
-        }
-
-        .country-selector .flag-icon {
-            font-size: 24px;
-        }
-
-        .country-selector .arrow {
-            margin-left: auto;
-            transition: transform 0.2s;
-        }
-
-        .country-selector.open .arrow {
-            transform: rotate(180deg);
-        }
-
+        .country-selector:hover { border-color: #ccc; }
+        .country-selector .flag-icon { font-size: 24px; }
+        .country-selector .arrow { margin-left: auto; transition: transform 0.2s; }
+        .country-selector.open .arrow { transform: rotate(180deg); }
         .country-dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: #fff;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            max-height: 300px;
-            overflow-y: auto;
-            margin-top: 4px;
-            display: none;
+            position: absolute; top: 100%; left: 0; right: 0; background: #fff;
+            border: 1px solid var(--border); border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 1000;
+            max-height: 300px; overflow-y: auto; margin-top: 4px; display: none;
         }
-
-        .country-dropdown.show {
-            display: block;
-        }
-
+        .country-dropdown.show { display: block; }
         .country-option {
-            display: flex;
-            align-items: center;
-            padding: 10px 16px;
-            gap: 12px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background 0.15s;
-            border-radius: 8px;
-            margin: 2px 4px;
+            display: flex; align-items: center; padding: 10px 16px; gap: 12px;
+            cursor: pointer; font-size: 14px; transition: background 0.15s;
+            border-radius: 8px; margin: 2px 4px;
         }
-
-        .country-option:hover {
-            background: var(--hover-ghost);
-        }
-        .country-option.selected {
-            background: var(--bg-alpha);
-        }
-
-        .country-option .flag-emoji {
-            font-size: 20px;
-            width: 28px;
-            text-align: center;
-        }
-
+        .country-option:hover { background: var(--hover-ghost); }
+        .country-option.selected { background: var(--bg-alpha); }
+        .country-option .flag-emoji { font-size: 20px; width: 28px; text-align: center; }
         .generate-btn {
-            border-radius: 24px;
-            background: var(--primary);
-            padding: 12px 32px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text);
-            transition: all 0.3s;
-            white-space: nowrap;
-            height: 48px;
+            border-radius: 24px; background: var(--primary); padding: 12px 32px;
+            border: none; cursor: pointer; font-size: 16px; font-weight: 600;
+            color: var(--text); transition: all 0.3s; white-space: nowrap; height: 48px;
         }
-
-        .generate-btn:hover {
-            background: var(--primary-hover);
-        }
-
-        /* Quick Countries */
-        .quick-countries {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 32px;
-        }
-
+        .generate-btn:hover { background: var(--primary-hover); }
+        .quick-countries { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 32px; }
         .quick-country-btn {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            background: var(--bg2);
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 14px;
-            font-weight: 500;
+            display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+            border-radius: 8px; border: 1px solid var(--border); background: var(--bg2);
+            cursor: pointer; transition: all 0.2s; font-size: 14px; font-weight: 500;
         }
-
-        .quick-country-btn:hover {
-            border-color: var(--primary);
-            background: var(--bg-alpha);
-        }
-
-        .quick-country-btn .flag-emoji {
-            font-size: 24px;
-        }
-
-        /* Results */
-        .results-heading {
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 20px;
-            margin-bottom: 16px;
-        }
-
-        .results-table {
-            width: 100%;
-            max-width: 834px;
-            margin: 0 auto;
-            border-collapse: separate;
-            border-spacing: 0;
-            border-radius: 6px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-        }
-
-        .results-table td {
-            padding: 16px;
-            background: var(--bg);
-            border-bottom: 1px solid var(--border);
-        }
-        .results-table tr:last-child td {
-            border-bottom: none;
-        }
-        .results-table td:nth-child(odd) {
-            border-right: 1px solid var(--border);
-        }
-
-        .result-cell {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .result-text {
-            font-size: 16px;
-            font-weight: 500;
-        }
-
+        .quick-country-btn:hover { border-color: var(--primary); background: var(--bg-alpha); }
+        .quick-country-btn .flag-emoji { font-size: 24px; }
+        .results-heading { text-align: center; color: var(--text-secondary); font-size: 20px; margin-bottom: 16px; }
+        .results-table { width: 100%; max-width: 834px; margin: 0 auto; border-collapse: separate; border-spacing: 0; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); }
+        .results-table td { padding: 16px; background: var(--bg); border-bottom: 1px solid var(--border); }
+        .results-table tr:last-child td { border-bottom: none; }
+        .results-table td:nth-child(odd) { border-right: 1px solid var(--border); }
+        .result-cell { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+        .result-text { font-size: 16px; font-weight: 500; }
         .copy-btn {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            padding: 4px 10px;
-            border-radius: 4px;
-            border: 1px solid var(--border);
-            background: var(--bg2);
-            cursor: pointer;
-            font-size: 13px;
-            color: var(--text);
-            transition: all 0.2s;
-            white-space: nowrap;
+            display: flex; align-items: center; gap: 4px; padding: 4px 10px;
+            border-radius: 4px; border: 1px solid var(--border); background: var(--bg2);
+            cursor: pointer; font-size: 13px; color: var(--text); transition: all 0.2s; white-space: nowrap;
         }
-
-        .copy-btn:hover {
-            background: #eee;
-        }
-        .copy-btn.copied {
-            background: var(--primary);
-            border-color: var(--primary);
-        }
-
-        .copy-btn svg {
-            width: 14px;
-            height: 14px;
-        }
-
-        /* Name Result Card */
-        .name-result-card {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            border-radius: 15px;
-            padding: 40px;
-            text-align: center;
-            max-width: 834px;
-            margin: 0 auto;
-        }
-
-        .name-result-card h2 {
-            font-size: 2.5em;
-            margin-bottom: 12px;
-        }
-
-        .name-details {
-            color: var(--text-secondary);
-            font-size: 1.1em;
-            line-height: 1.6;
-        }
-
-        /* Spacing */
-        .spacer-24 {
-            height: 24px;
-        }
-        .spacer-40 {
-            height: 40px;
-        }
-        .spacer-80 {
-            height: 80px;
-        }
-
-        /* Gender select */
-        .gender-select {
-            padding: 12px 16px;
-            border-radius: 24px;
-            border: 1px solid var(--border);
-            background: #fff;
-            font-size: 16px;
-            cursor: pointer;
-            height: 48px;
-        }
-
+        .copy-btn:hover { background: #eee; }
+        .copy-btn.copied { background: var(--primary); border-color: var(--primary); }
+        .copy-btn svg { width: 14px; height: 14px; }
+        .name-result-card { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); border-radius: 15px; padding: 40px; text-align: center; max-width: 834px; margin: 0 auto; }
+        .name-result-card h2 { font-size: 2.5em; margin-bottom: 12px; }
+        .name-details { color: var(--text-secondary); font-size: 1.1em; line-height: 1.6; }
+        .spacer-80 { height: 80px; }
+        .gender-select { padding: 12px 16px; border-radius: 24px; border: 1px solid var(--border); background: #fff; font-size: 16px; cursor: pointer; height: 48px; }
         @media (max-width: 767px) {
-            h1 {
-                font-size: 1.6em;
-            }
-            .search-section {
-                flex-direction: column;
-            }
-            .country-selector-wrapper {
-                width: 100%;
-            }
-            .generate-btn {
-                width: 100%;
-            }
-            .results-table td {
-                display: block;
-                width: 100%;
-                border-right: none !important;
-            }
-            .results-table tr {
-                display: block;
-            }
-            .name-result-card h2 {
-                font-size: 1.6em;
-            }
-            .features {
-                gap: 12px;
-            }
-            .feature {
-                font-size: 14px;
-            }
+            h1 { font-size: 1.6em; }
+            .search-section { flex-direction: column; }
+            .country-selector-wrapper { width: 100%; }
+            .generate-btn { width: 100%; }
+            .results-table td { display: block; width: 100%; border-right: none !important; }
+            .results-table tr { display: block; }
+            .name-result-card h2 { font-size: 1.6em; }
+            .features { gap: 12px; }
+            .feature { font-size: 14px; }
         }
     </style>
 </head>
@@ -415,66 +121,51 @@
             <p class="subtitle">Global phone numbers at your fingertips. Create them in seconds.</p>
         </header>
 
-        <!-- Tabs -->
         <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('phone')">📱 Phone Number Generator</button>
-            <button class="tab-btn" onclick="switchTab('name')">👤 Fake Name Generator</button>
+            <button class="tab-btn active" id="tabPhoneBtn">📱 Phone Number Generator</button>
+            <button class="tab-btn" id="tabNameBtn">👤 Fake Name Generator</button>
         </div>
 
-        <!-- Features -->
         <div class="features">
             <div class="feature">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
-                    <path stroke="#80E142" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.208 7.183a3.333 3.333 0 0 1 3.984-3.975 3.333 3.333 0 0 1 5.617 0 3.333 3.333 0 0 1 3.983 3.984 3.333 3.333 0 0 1 0 5.616 3.333 3.333 0 0 1-3.975 3.984 3.333 3.333 0 0 1-5.625 0 3.333 3.333 0 0 1-3.984-3.975 3.335 3.335 0 0 1 0-5.634Z"/>
-                    <path stroke="#80E142" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7.5 10 1.667 1.667L12.5 8.333"/>
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path stroke="#80E142" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.208 7.183a3.333 3.333 0 0 1 3.984-3.975 3.333 3.333 0 0 1 5.617 0 3.333 3.333 0 0 1 3.983 3.984 3.333 3.333 0 0 1 0 5.616 3.333 3.333 0 0 1-3.975 3.984 3.333 3.333 0 0 1-5.625 0 3.333 3.333 0 0 1-3.984-3.975 3.335 3.335 0 0 1 0-5.634Z"/><path stroke="#80E142" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7.5 10 1.667 1.667L12.5 8.333"/></svg>
                 <span>Instant Results</span>
             </div>
             <div class="feature">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
-                    <path stroke="#80E142" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.208 7.183a3.333 3.333 0 0 1 3.984-3.975 3.333 3.333 0 0 1 5.617 0 3.333 3.333 0 0 1 3.983 3.984 3.333 3.333 0 0 1 0 5.616 3.333 3.333 0 0 1-3.975 3.984 3.333 3.333 0 0 1-5.625 0 3.333 3.333 0 0 1-3.984-3.975 3.335 3.335 0 0 1 0-5.634Z"/>
-                    <path stroke="#80E142" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7.5 10 1.667 1.667L12.5 8.333"/>
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path stroke="#80E142" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.208 7.183a3.333 3.333 0 0 1 3.984-3.975 3.333 3.333 0 0 1 5.617 0 3.333 3.333 0 0 1 3.983 3.984 3.333 3.333 0 0 1 0 5.616 3.333 3.333 0 0 1-3.975 3.984 3.333 3.333 0 0 1-5.625 0 3.333 3.333 0 0 1-3.984-3.975 3.335 3.335 0 0 1 0-5.634Z"/><path stroke="#80E142" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7.5 10 1.667 1.667L12.5 8.333"/></svg>
                 <span>Works Worldwide</span>
             </div>
             <div class="feature">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
-                    <path stroke="#80E142" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.208 7.183a3.333 3.333 0 0 1 3.984-3.975 3.333 3.333 0 0 1 5.617 0 3.333 3.333 0 0 1 3.983 3.984 3.333 3.333 0 0 1 0 5.616 3.333 3.333 0 0 1-3.975 3.984 3.333 3.333 0 0 1-5.625 0 3.333 3.333 0 0 1-3.984-3.975 3.335 3.335 0 0 1 0-5.634Z"/>
-                    <path stroke="#80E142" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7.5 10 1.667 1.667L12.5 8.333"/>
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path stroke="#80E142" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.208 7.183a3.333 3.333 0 0 1 3.984-3.975 3.333 3.333 0 0 1 5.617 0 3.333 3.333 0 0 1 3.983 3.984 3.333 3.333 0 0 1 0 5.616 3.333 3.333 0 0 1-3.975 3.984 3.333 3.333 0 0 1-5.625 0 3.333 3.333 0 0 1-3.984-3.975 3.335 3.335 0 0 1 0-5.634Z"/><path stroke="#80E142" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7.5 10 1.667 1.667L12.5 8.333"/></svg>
                 <span>Safe & Secure Use</span>
             </div>
         </div>
 
-        <!-- ==================== PHONE NUMBER TAB ==================== -->
+        <!-- PHONE TAB -->
         <div class="tab-content active" id="phone-tab">
             <div class="search-section">
-                <div class="country-selector-wrapper">
-                    <div class="country-selector" id="phoneCountrySelector" onclick="togglePhoneDropdown()">
+                <div class="country-selector-wrapper" id="phoneCountryWrapper">
+                    <div class="country-selector" id="phoneCountrySelector">
                         <span class="flag-icon" id="phoneFlagIcon">🇧🇩</span>
                         <span id="phoneCountryName">Bangladesh</span>
                         <span class="arrow">▾</span>
                     </div>
                     <div class="country-dropdown" id="phoneCountryDropdown"></div>
                 </div>
-                <button class="generate-btn" onclick="generatePhoneNumbers()">Generate</button>
+                <button class="generate-btn" id="phoneGenerateBtn">Generate</button>
             </div>
-
-            <!-- Quick Countries -->
             <div class="quick-countries" id="quickPhoneCountries"></div>
-
-            <!-- Results -->
             <div id="phoneResults">
                 <p class="results-heading" id="phoneResultsHeading">Search for 'Bangladesh'</p>
                 <div id="phoneResultsTable"></div>
             </div>
         </div>
 
-        <!-- ==================== NAME GENERATOR TAB ==================== -->
+        <!-- NAME TAB -->
         <div class="tab-content" id="name-tab">
             <div class="search-section">
-                <div class="country-selector-wrapper">
-                    <div class="country-selector" id="nameCountrySelector" onclick="toggleNameDropdown()">
+                <div class="country-selector-wrapper" id="nameCountryWrapper">
+                    <div class="country-selector" id="nameCountrySelector">
                         <span class="flag-icon" id="nameFlagIcon">🇧🇩</span>
                         <span id="nameCountryName">Bangladesh</span>
                         <span class="arrow">▾</span>
@@ -486,469 +177,543 @@
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </select>
-                <button class="generate-btn" onclick="generateName()">Generate Name</button>
+                <button class="generate-btn" id="nameGenerateBtn">Generate Name</button>
             </div>
-
-            <!-- Quick Countries for Name -->
             <div class="quick-countries" id="quickNameCountries"></div>
-
-            <!-- Name Result -->
             <div id="nameResult">
                 <div class="name-result-card">
                     <h2 id="generatedName">Click Generate</h2>
                     <div class="name-details" id="nameDetails"></div>
-                    <button class="copy-btn" id="nameCopyBtn" style="margin-top:16px;display:none;" onclick="copyName()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <path d="M2.666 10.667C1.933 10.667 1.333 10.067 1.333 9.333V2.667C1.333 1.933 1.933 1.333 2.666 1.333h6.667c.733 0 1.333.6 1.333 1.334M6.667 5.333h6.667c.736 0 1.333.597 1.333 1.334v6.666c0 .737-.597 1.334-1.333 1.334H6.667a1.333 1.333 0 0 1-1.334-1.334V6.667c0-.737.597-1.334 1.334-1.334z" stroke="#474E5A" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                    <button class="copy-btn" id="nameCopyBtn" style="margin-top:16px;display:none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2.666 10.667C1.933 10.667 1.333 10.067 1.333 9.333V2.667C1.333 1.933 1.933 1.333 2.666 1.333h6.667c.733 0 1.333.6 1.333 1.334M6.667 5.333h6.667c.736 0 1.333.597 1.333 1.334v6.666c0 .737-.597 1.334-1.333 1.334H6.667a1.333 1.333 0 0 1-1.334-1.334V6.667c0-.737.597-1.334 1.334-1.334z" stroke="#474E5A" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         Copy Name
                     </button>
                 </div>
             </div>
         </div>
-
         <div class="spacer-80"></div>
     </div>
 
     <script>
-        // ==================== DATA ====================
-        // Full country data with flags, codes, and phone prefixes
-        const allCountries = [
-            { code: 'BD', name: 'Bangladesh', flag: '🇧🇩', phone: '+880', lang: 'Bengali', script: 'Bengali' },
-            { code: 'US', name: 'United States', flag: '🇺🇸', phone: '+1', lang: 'English', script: 'Latin' },
-            { code: 'GB', name: 'United Kingdom', flag: '🇬🇧', phone: '+44', lang: 'English', script: 'Latin' },
-            { code: 'CA', name: 'Canada', flag: '🇨🇦', phone: '+1', lang: 'English/French', script: 'Latin' },
-            { code: 'AU', name: 'Australia', flag: '🇦🇺', phone: '+61', lang: 'English', script: 'Latin' },
-            { code: 'IN', name: 'India', flag: '🇮🇳', phone: '+91', lang: 'Hindi', script: 'Devanagari' },
-            { code: 'PK', name: 'Pakistan', flag: '🇵🇰', phone: '+92', lang: 'Urdu', script: 'Arabic' },
-            { code: 'SA', name: 'Saudi Arabia', flag: '🇸🇦', phone: '+966', lang: 'Arabic', script: 'Arabic' },
-            { code: 'AE', name: 'United Arab Emirates', flag: '🇦🇪', phone: '+971', lang: 'Arabic', script: 'Arabic' },
-            { code: 'QA', name: 'Qatar', flag: '🇶🇦', phone: '+974', lang: 'Arabic', script: 'Arabic' },
-            { code: 'KW', name: 'Kuwait', flag: '🇰🇼', phone: '+965', lang: 'Arabic', script: 'Arabic' },
-            { code: 'OM', name: 'Oman', flag: '🇴🇲', phone: '+968', lang: 'Arabic', script: 'Arabic' },
-            { code: 'BH', name: 'Bahrain', flag: '🇧🇭', phone: '+973', lang: 'Arabic', script: 'Arabic' },
-            { code: 'DE', name: 'Germany', flag: '🇩🇪', phone: '+49', lang: 'German', script: 'Latin' },
-            { code: 'FR', name: 'France', flag: '🇫🇷', phone: '+33', lang: 'French', script: 'Latin' },
-            { code: 'IT', name: 'Italy', flag: '🇮🇹', phone: '+39', lang: 'Italian', script: 'Latin' },
-            { code: 'ES', name: 'Spain', flag: '🇪🇸', phone: '+34', lang: 'Spanish', script: 'Latin' },
-            { code: 'PT', name: 'Portugal', flag: '🇵🇹', phone: '+351', lang: 'Portuguese', script: 'Latin' },
-            { code: 'BR', name: 'Brazil', flag: '🇧🇷', phone: '+55', lang: 'Portuguese', script: 'Latin' },
-            { code: 'AR', name: 'Argentina', flag: '🇦🇷', phone: '+54', lang: 'Spanish', script: 'Latin' },
-            { code: 'MX', name: 'Mexico', flag: '🇲🇽', phone: '+52', lang: 'Spanish', script: 'Latin' },
-            { code: 'CO', name: 'Colombia', flag: '🇨🇴', phone: '+57', lang: 'Spanish', script: 'Latin' },
-            { code: 'CL', name: 'Chile', flag: '🇨🇱', phone: '+56', lang: 'Spanish', script: 'Latin' },
-            { code: 'PE', name: 'Peru', flag: '🇵🇪', phone: '+51', lang: 'Spanish', script: 'Latin' },
-            { code: 'VE', name: 'Venezuela', flag: '🇻🇪', phone: '+58', lang: 'Spanish', script: 'Latin' },
-            { code: 'JP', name: 'Japan', flag: '🇯🇵', phone: '+81', lang: 'Japanese', script: 'Japanese' },
-            { code: 'KR', name: 'South Korea', flag: '🇰🇷', phone: '+82', lang: 'Korean', script: 'Korean' },
-            { code: 'CN', name: 'China', flag: '🇨🇳', phone: '+86', lang: 'Chinese', script: 'Chinese' },
-            { code: 'TW', name: 'Taiwan', flag: '🇹🇼', phone: '+886', lang: 'Chinese', script: 'Chinese' },
-            { code: 'HK', name: 'Hong Kong', flag: '🇭🇰', phone: '+852', lang: 'Chinese', script: 'Chinese' },
-            { code: 'SG', name: 'Singapore', flag: '🇸🇬', phone: '+65', lang: 'English/Chinese', script: 'Latin/Chinese' },
-            { code: 'MY', name: 'Malaysia', flag: '🇲🇾', phone: '+60', lang: 'Malay', script: 'Latin' },
-            { code: 'ID', name: 'Indonesia', flag: '🇮🇩', phone: '+62', lang: 'Indonesian', script: 'Latin' },
-            { code: 'PH', name: 'Philippines', flag: '🇵🇭', phone: '+63', lang: 'Filipino', script: 'Latin' },
-            { code: 'VN', name: 'Vietnam', flag: '🇻🇳', phone: '+84', lang: 'Vietnamese', script: 'Latin' },
-            { code: 'TH', name: 'Thailand', flag: '🇹🇭', phone: '+66', lang: 'Thai', script: 'Thai' },
-            { code: 'MM', name: 'Myanmar', flag: '🇲🇲', phone: '+95', lang: 'Burmese', script: 'Burmese' },
-            { code: 'NP', name: 'Nepal', flag: '🇳🇵', phone: '+977', lang: 'Nepali', script: 'Devanagari' },
-            { code: 'LK', name: 'Sri Lanka', flag: '🇱🇰', phone: '+94', lang: 'Sinhala', script: 'Sinhala' },
-            { code: 'RU', name: 'Russia', flag: '🇷🇺', phone: '+7', lang: 'Russian', script: 'Cyrillic' },
-            { code: 'TR', name: 'Turkey', flag: '🇹🇷', phone: '+90', lang: 'Turkish', script: 'Latin' },
-            { code: 'IR', name: 'Iran', flag: '🇮🇷', phone: '+98', lang: 'Persian', script: 'Arabic' },
-            { code: 'IQ', name: 'Iraq', flag: '🇮🇶', phone: '+964', lang: 'Arabic', script: 'Arabic' },
-            { code: 'SY', name: 'Syria', flag: '🇸🇾', phone: '+963', lang: 'Arabic', script: 'Arabic' },
-            { code: 'JO', name: 'Jordan', flag: '🇯🇴', phone: '+962', lang: 'Arabic', script: 'Arabic' },
-            { code: 'LB', name: 'Lebanon', flag: '🇱🇧', phone: '+961', lang: 'Arabic', script: 'Arabic' },
-            { code: 'IL', name: 'Israel', flag: '🇮🇱', phone: '+972', lang: 'Hebrew', script: 'Hebrew' },
-            { code: 'EG', name: 'Egypt', flag: '🇪🇬', phone: '+20', lang: 'Arabic', script: 'Arabic' },
-            { code: 'NG', name: 'Nigeria', flag: '🇳🇬', phone: '+234', lang: 'English', script: 'Latin' },
-            { code: 'ZA', name: 'South Africa', flag: '🇿🇦', phone: '+27', lang: 'English/Zulu', script: 'Latin' },
-            { code: 'KE', name: 'Kenya', flag: '🇰🇪', phone: '+254', lang: 'Swahili', script: 'Latin' },
-            { code: 'ET', name: 'Ethiopia', flag: '🇪🇹', phone: '+251', lang: 'Amharic', script: 'Ethiopic' },
-            { code: 'GH', name: 'Ghana', flag: '🇬🇭', phone: '+233', lang: 'English', script: 'Latin' },
-            { code: 'MA', name: 'Morocco', flag: '🇲🇦', phone: '+212', lang: 'Arabic', script: 'Arabic' },
-            { code: 'DZ', name: 'Algeria', flag: '🇩🇿', phone: '+213', lang: 'Arabic', script: 'Arabic' },
-            { code: 'TN', name: 'Tunisia', flag: '🇹🇳', phone: '+216', lang: 'Arabic', script: 'Arabic' },
-            { code: 'LY', name: 'Libya', flag: '🇱🇾', phone: '+218', lang: 'Arabic', script: 'Arabic' },
-            { code: 'SD', name: 'Sudan', flag: '🇸🇩', phone: '+249', lang: 'Arabic', script: 'Arabic' },
-            { code: 'NL', name: 'Netherlands', flag: '🇳🇱', phone: '+31', lang: 'Dutch', script: 'Latin' },
-            { code: 'BE', name: 'Belgium', flag: '🇧🇪', phone: '+32', lang: 'Dutch/French', script: 'Latin' },
-            { code: 'SE', name: 'Sweden', flag: '🇸🇪', phone: '+46', lang: 'Swedish', script: 'Latin' },
-            { code: 'NO', name: 'Norway', flag: '🇳🇴', phone: '+47', lang: 'Norwegian', script: 'Latin' },
-            { code: 'DK', name: 'Denmark', flag: '🇩🇰', phone: '+45', lang: 'Danish', script: 'Latin' },
-            { code: 'FI', name: 'Finland', flag: '🇫🇮', phone: '+358', lang: 'Finnish', script: 'Latin' },
-            { code: 'PL', name: 'Poland', flag: '🇵🇱', phone: '+48', lang: 'Polish', script: 'Latin' },
-            { code: 'UA', name: 'Ukraine', flag: '🇺🇦', phone: '+380', lang: 'Ukrainian', script: 'Cyrillic' },
-            { code: 'RO', name: 'Romania', flag: '🇷🇴', phone: '+40', lang: 'Romanian', script: 'Latin' },
-            { code: 'CZ', name: 'Czech Republic', flag: '🇨🇿', phone: '+420', lang: 'Czech', script: 'Latin' },
-            { code: 'GR', name: 'Greece', flag: '🇬🇷', phone: '+30', lang: 'Greek', script: 'Greek' },
-            { code: 'HU', name: 'Hungary', flag: '🇭🇺', phone: '+36', lang: 'Hungarian', script: 'Latin' },
-            { code: 'AT', name: 'Austria', flag: '🇦🇹', phone: '+43', lang: 'German', script: 'Latin' },
-            { code: 'CH', name: 'Switzerland', flag: '🇨🇭', phone: '+41', lang: 'German/French/Italian', script: 'Latin' },
-            { code: 'IE', name: 'Ireland', flag: '🇮🇪', phone: '+353', lang: 'English/Irish', script: 'Latin' },
-            { code: 'NZ', name: 'New Zealand', flag: '🇳🇿', phone: '+64', lang: 'English', script: 'Latin' },
-            { code: 'AF', name: 'Afghanistan', flag: '🇦🇫', phone: '+93', lang: 'Pashto/Dari', script: 'Arabic' },
-            { code: 'AM', name: 'Armenia', flag: '🇦🇲', phone: '+374', lang: 'Armenian', script: 'Armenian' },
-            { code: 'AZ', name: 'Azerbaijan', flag: '🇦🇿', phone: '+994', lang: 'Azerbaijani', script: 'Latin' },
-            { code: 'BG', name: 'Bulgaria', flag: '🇧🇬', phone: '+359', lang: 'Bulgarian', script: 'Cyrillic' },
-            { code: 'KH', name: 'Cambodia', flag: '🇰🇭', phone: '+855', lang: 'Khmer', script: 'Khmer' },
-            { code: 'HR', name: 'Croatia', flag: '🇭🇷', phone: '+385', lang: 'Croatian', script: 'Latin' },
-            { code: 'CY', name: 'Cyprus', flag: '🇨🇾', phone: '+357', lang: 'Greek/Turkish', script: 'Greek/Latin' },
-            { code: 'EE', name: 'Estonia', flag: '🇪🇪', phone: '+372', lang: 'Estonian', script: 'Latin' },
-            { code: 'GE', name: 'Georgia', flag: '🇬🇪', phone: '+995', lang: 'Georgian', script: 'Georgian' },
-            { code: 'IS', name: 'Iceland', flag: '🇮🇸', phone: '+354', lang: 'Icelandic', script: 'Latin' },
-            { code: 'KZ', name: 'Kazakhstan', flag: '🇰🇿', phone: '+7', lang: 'Kazakh', script: 'Cyrillic' },
-            { code: 'KG', name: 'Kyrgyzstan', flag: '🇰🇬', phone: '+996', lang: 'Kyrgyz', script: 'Cyrillic' },
-            { code: 'LA', name: 'Laos', flag: '🇱🇦', phone: '+856', lang: 'Lao', script: 'Lao' },
-            { code: 'LV', name: 'Latvia', flag: '🇱🇻', phone: '+371', lang: 'Latvian', script: 'Latin' },
-            { code: 'LT', name: 'Lithuania', flag: '🇱🇹', phone: '+370', lang: 'Lithuanian', script: 'Latin' },
-            { code: 'LU', name: 'Luxembourg', flag: '🇱🇺', phone: '+352', lang: 'Luxembourgish', script: 'Latin' },
-            { code: 'MT', name: 'Malta', flag: '🇲🇹', phone: '+356', lang: 'Maltese', script: 'Latin' },
-            { code: 'MD', name: 'Moldova', flag: '🇲🇩', phone: '+373', lang: 'Romanian', script: 'Latin' },
-            { code: 'MC', name: 'Monaco', flag: '🇲🇨', phone: '+377', lang: 'French', script: 'Latin' },
-            { code: 'MN', name: 'Mongolia', flag: '🇲🇳', phone: '+976', lang: 'Mongolian', script: 'Cyrillic' },
-            { code: 'ME', name: 'Montenegro', flag: '🇲🇪', phone: '+382', lang: 'Montenegrin', script: 'Latin/Cyrillic' },
-            { code: 'MK', name: 'North Macedonia', flag: '🇲🇰', phone: '+389', lang: 'Macedonian', script: 'Cyrillic' },
-            { code: 'RS', name: 'Serbia', flag: '🇷🇸', phone: '+381', lang: 'Serbian', script: 'Cyrillic/Latin' },
-            { code: 'SK', name: 'Slovakia', flag: '🇸🇰', phone: '+421', lang: 'Slovak', script: 'Latin' },
-            { code: 'SI', name: 'Slovenia', flag: '🇸🇮', phone: '+386', lang: 'Slovenian', script: 'Latin' },
-            { code: 'TJ', name: 'Tajikistan', flag: '🇹🇯', phone: '+992', lang: 'Tajik', script: 'Cyrillic' },
-            { code: 'TM', name: 'Turkmenistan', flag: '🇹🇲', phone: '+993', lang: 'Turkmen', script: 'Latin' },
-            { code: 'UZ', name: 'Uzbekistan', flag: '🇺🇿', phone: '+998', lang: 'Uzbek', script: 'Latin/Cyrillic' },
-            { code: 'YE', name: 'Yemen', flag: '🇾🇪', phone: '+967', lang: 'Arabic', script: 'Arabic' },
-            { code: 'PS', name: 'Palestine', flag: '🇵🇸', phone: '+970', lang: 'Arabic', script: 'Arabic' },
-            { code: 'AL', name: 'Albania', flag: '🇦🇱', phone: '+355', lang: 'Albanian', script: 'Latin' },
-            { code: 'BA', name: 'Bosnia and Herzegovina', flag: '🇧🇦', phone: '+387', lang: 'Bosnian', script: 'Latin/Cyrillic' },
-            { code: 'CR', name: 'Costa Rica', flag: '🇨🇷', phone: '+506', lang: 'Spanish', script: 'Latin' },
-            { code: 'CU', name: 'Cuba', flag: '🇨🇺', phone: '+53', lang: 'Spanish', script: 'Latin' },
-            { code: 'DO', name: 'Dominican Republic', flag: '🇩🇴', phone: '+1', lang: 'Spanish', script: 'Latin' },
-            { code: 'EC', name: 'Ecuador', flag: '🇪🇨', phone: '+593', lang: 'Spanish', script: 'Latin' },
-            { code: 'GT', name: 'Guatemala', flag: '🇬🇹', phone: '+502', lang: 'Spanish', script: 'Latin' },
-            { code: 'HN', name: 'Honduras', flag: '🇭🇳', phone: '+504', lang: 'Spanish', script: 'Latin' },
-            { code: 'NI', name: 'Nicaragua', flag: '🇳🇮', phone: '+505', lang: 'Spanish', script: 'Latin' },
-            { code: 'PA', name: 'Panama', flag: '🇵🇦', phone: '+507', lang: 'Spanish', script: 'Latin' },
-            { code: 'PY', name: 'Paraguay', flag: '🇵🇾', phone: '+595', lang: 'Spanish', script: 'Latin' },
-            { code: 'SV', name: 'El Salvador', flag: '🇸🇻', phone: '+503', lang: 'Spanish', script: 'Latin' },
-            { code: 'UY', name: 'Uruguay', flag: '🇺🇾', phone: '+598', lang: 'Spanish', script: 'Latin' },
-            { code: 'BO', name: 'Bolivia', flag: '🇧🇴', phone: '+591', lang: 'Spanish', script: 'Latin' },
-            { code: 'CM', name: 'Cameroon', flag: '🇨🇲', phone: '+237', lang: 'French/English', script: 'Latin' },
-            { code: 'CI', name: "Côte d'Ivoire", flag: '🇨🇮', phone: '+225', lang: 'French', script: 'Latin' },
-            { code: 'CD', name: 'Congo (DRC)', flag: '🇨🇩', phone: '+243', lang: 'French', script: 'Latin' },
-            { code: 'MG', name: 'Madagascar', flag: '🇲🇬', phone: '+261', lang: 'Malagasy', script: 'Latin' },
-            { code: 'ML', name: 'Mali', flag: '🇲🇱', phone: '+223', lang: 'French', script: 'Latin' },
-            { code: 'MZ', name: 'Mozambique', flag: '🇲🇿', phone: '+258', lang: 'Portuguese', script: 'Latin' },
-            { code: 'NE', name: 'Niger', flag: '🇳🇪', phone: '+227', lang: 'French', script: 'Latin' },
-            { code: 'RW', name: 'Rwanda', flag: '🇷🇼', phone: '+250', lang: 'Kinyarwanda', script: 'Latin' },
-            { code: 'SN', name: 'Senegal', flag: '🇸🇳', phone: '+221', lang: 'French', script: 'Latin' },
-            { code: 'SO', name: 'Somalia', flag: '🇸🇴', phone: '+252', lang: 'Somali', script: 'Latin' },
-            { code: 'TZ', name: 'Tanzania', flag: '🇹🇿', phone: '+255', lang: 'Swahili', script: 'Latin' },
-            { code: 'UG', name: 'Uganda', flag: '🇺🇬', phone: '+256', lang: 'English', script: 'Latin' },
-            { code: 'ZM', name: 'Zambia', flag: '🇿🇲', phone: '+260', lang: 'English', script: 'Latin' },
-            { code: 'ZW', name: 'Zimbabwe', flag: '🇿🇼', phone: '+263', lang: 'English', script: 'Latin' },
-            { code: 'AO', name: 'Angola', flag: '🇦🇴', phone: '+244', lang: 'Portuguese', script: 'Latin' },
-            { code: 'BF', name: 'Burkina Faso', flag: '🇧🇫', phone: '+226', lang: 'French', script: 'Latin' },
-            { code: 'BJ', name: 'Benin', flag: '🇧🇯', phone: '+229', lang: 'French', script: 'Latin' },
-            { code: 'BW', name: 'Botswana', flag: '🇧🇼', phone: '+267', lang: 'English', script: 'Latin' },
-            { code: 'CG', name: 'Congo (Republic)', flag: '🇨🇬', phone: '+242', lang: 'French', script: 'Latin' },
-            { code: 'GA', name: 'Gabon', flag: '🇬🇦', phone: '+241', lang: 'French', script: 'Latin' },
-            { code: 'GM', name: 'Gambia', flag: '🇬🇲', phone: '+220', lang: 'English', script: 'Latin' },
-            { code: 'GN', name: 'Guinea', flag: '🇬🇳', phone: '+224', lang: 'French', script: 'Latin' },
-            { code: 'LR', name: 'Liberia', flag: '🇱🇷', phone: '+231', lang: 'English', script: 'Latin' },
-            { code: 'LS', name: 'Lesotho', flag: '🇱🇸', phone: '+266', lang: 'English', script: 'Latin' },
-            { code: 'MR', name: 'Mauritania', flag: '🇲🇷', phone: '+222', lang: 'Arabic', script: 'Arabic' },
-            { code: 'MW', name: 'Malawi', flag: '🇲🇼', phone: '+265', lang: 'English', script: 'Latin' },
-            { code: 'NA', name: 'Namibia', flag: '🇳🇦', phone: '+264', lang: 'English', script: 'Latin' },
-            { code: 'SL', name: 'Sierra Leone', flag: '🇸🇱', phone: '+232', lang: 'English', script: 'Latin' },
-            { code: 'SS', name: 'South Sudan', flag: '🇸🇸', phone: '+211', lang: 'English', script: 'Latin' },
-            { code: 'TD', name: 'Chad', flag: '🇹🇩', phone: '+235', lang: 'French/Arabic', script: 'Latin/Arabic' },
-            { code: 'TG', name: 'Togo', flag: '🇹🇬', phone: '+228', lang: 'French', script: 'Latin' },
-            { code: 'BT', name: 'Bhutan', flag: '🇧🇹', phone: '+975', lang: 'Dzongkha', script: 'Tibetan' },
-            { code: 'MV', name: 'Maldives', flag: '🇲🇻', phone: '+960', lang: 'Dhivehi', script: 'Thaana' },
-            { code: 'FJ', name: 'Fiji', flag: '🇫🇯', phone: '+679', lang: 'English/Fijian', script: 'Latin' },
-            { code: 'PG', name: 'Papua New Guinea', flag: '🇵🇬', phone: '+675', lang: 'English', script: 'Latin' },
-            { code: 'BN', name: 'Brunei', flag: '🇧🇳', phone: '+673', lang: 'Malay', script: 'Latin' },
-            { code: 'KP', name: 'North Korea', flag: '🇰🇵', phone: '+850', lang: 'Korean', script: 'Korean' },
-            { code: 'TL', name: 'Timor-Leste', flag: '🇹🇱', phone: '+670', lang: 'Tetum', script: 'Latin' },
-            { code: 'QA', name: 'Qatar', flag: '🇶🇦', phone: '+974', lang: 'Arabic', script: 'Arabic' },
-        ];
+    // ==================== DATA (FIXED - removed duplicate QA) ====================
+    const allCountries = [
+        { code: 'BD', name: 'Bangladesh', flag: '🇧🇩', phone: '+880', lang: 'Bengali', script: 'Bengali' },
+        { code: 'US', name: 'United States', flag: '🇺🇸', phone: '+1', lang: 'English', script: 'Latin' },
+        { code: 'GB', name: 'United Kingdom', flag: '🇬🇧', phone: '+44', lang: 'English', script: 'Latin' },
+        { code: 'CA', name: 'Canada', flag: '🇨🇦', phone: '+1', lang: 'English/French', script: 'Latin' },
+        { code: 'AU', name: 'Australia', flag: '🇦🇺', phone: '+61', lang: 'English', script: 'Latin' },
+        { code: 'IN', name: 'India', flag: '🇮🇳', phone: '+91', lang: 'Hindi', script: 'Devanagari' },
+        { code: 'PK', name: 'Pakistan', flag: '🇵🇰', phone: '+92', lang: 'Urdu', script: 'Arabic' },
+        { code: 'SA', name: 'Saudi Arabia', flag: '🇸🇦', phone: '+966', lang: 'Arabic', script: 'Arabic' },
+        { code: 'AE', name: 'United Arab Emirates', flag: '🇦🇪', phone: '+971', lang: 'Arabic', script: 'Arabic' },
+        { code: 'QA', name: 'Qatar', flag: '🇶🇦', phone: '+974', lang: 'Arabic', script: 'Arabic' },
+        { code: 'KW', name: 'Kuwait', flag: '🇰🇼', phone: '+965', lang: 'Arabic', script: 'Arabic' },
+        { code: 'OM', name: 'Oman', flag: '🇴🇲', phone: '+968', lang: 'Arabic', script: 'Arabic' },
+        { code: 'BH', name: 'Bahrain', flag: '🇧🇭', phone: '+973', lang: 'Arabic', script: 'Arabic' },
+        { code: 'DE', name: 'Germany', flag: '🇩🇪', phone: '+49', lang: 'German', script: 'Latin' },
+        { code: 'FR', name: 'France', flag: '🇫🇷', phone: '+33', lang: 'French', script: 'Latin' },
+        { code: 'IT', name: 'Italy', flag: '🇮🇹', phone: '+39', lang: 'Italian', script: 'Latin' },
+        { code: 'ES', name: 'Spain', flag: '🇪🇸', phone: '+34', lang: 'Spanish', script: 'Latin' },
+        { code: 'PT', name: 'Portugal', flag: '🇵🇹', phone: '+351', lang: 'Portuguese', script: 'Latin' },
+        { code: 'BR', name: 'Brazil', flag: '🇧🇷', phone: '+55', lang: 'Portuguese', script: 'Latin' },
+        { code: 'AR', name: 'Argentina', flag: '🇦🇷', phone: '+54', lang: 'Spanish', script: 'Latin' },
+        { code: 'MX', name: 'Mexico', flag: '🇲🇽', phone: '+52', lang: 'Spanish', script: 'Latin' },
+        { code: 'CO', name: 'Colombia', flag: '🇨🇴', phone: '+57', lang: 'Spanish', script: 'Latin' },
+        { code: 'CL', name: 'Chile', flag: '🇨🇱', phone: '+56', lang: 'Spanish', script: 'Latin' },
+        { code: 'PE', name: 'Peru', flag: '🇵🇪', phone: '+51', lang: 'Spanish', script: 'Latin' },
+        { code: 'VE', name: 'Venezuela', flag: '🇻🇪', phone: '+58', lang: 'Spanish', script: 'Latin' },
+        { code: 'JP', name: 'Japan', flag: '🇯🇵', phone: '+81', lang: 'Japanese', script: 'Japanese' },
+        { code: 'KR', name: 'South Korea', flag: '🇰🇷', phone: '+82', lang: 'Korean', script: 'Korean' },
+        { code: 'CN', name: 'China', flag: '🇨🇳', phone: '+86', lang: 'Chinese', script: 'Chinese' },
+        { code: 'TW', name: 'Taiwan', flag: '🇹🇼', phone: '+886', lang: 'Chinese', script: 'Chinese' },
+        { code: 'HK', name: 'Hong Kong', flag: '🇭🇰', phone: '+852', lang: 'Chinese', script: 'Chinese' },
+        { code: 'SG', name: 'Singapore', flag: '🇸🇬', phone: '+65', lang: 'English/Chinese', script: 'Latin/Chinese' },
+        { code: 'MY', name: 'Malaysia', flag: '🇲🇾', phone: '+60', lang: 'Malay', script: 'Latin' },
+        { code: 'ID', name: 'Indonesia', flag: '🇮🇩', phone: '+62', lang: 'Indonesian', script: 'Latin' },
+        { code: 'PH', name: 'Philippines', flag: '🇵🇭', phone: '+63', lang: 'Filipino', script: 'Latin' },
+        { code: 'VN', name: 'Vietnam', flag: '🇻🇳', phone: '+84', lang: 'Vietnamese', script: 'Latin' },
+        { code: 'TH', name: 'Thailand', flag: '🇹🇭', phone: '+66', lang: 'Thai', script: 'Thai' },
+        { code: 'MM', name: 'Myanmar', flag: '🇲🇲', phone: '+95', lang: 'Burmese', script: 'Burmese' },
+        { code: 'NP', name: 'Nepal', flag: '🇳🇵', phone: '+977', lang: 'Nepali', script: 'Devanagari' },
+        { code: 'LK', name: 'Sri Lanka', flag: '🇱🇰', phone: '+94', lang: 'Sinhala', script: 'Sinhala' },
+        { code: 'RU', name: 'Russia', flag: '🇷🇺', phone: '+7', lang: 'Russian', script: 'Cyrillic' },
+        { code: 'TR', name: 'Turkey', flag: '🇹🇷', phone: '+90', lang: 'Turkish', script: 'Latin' },
+        { code: 'IR', name: 'Iran', flag: '🇮🇷', phone: '+98', lang: 'Persian', script: 'Arabic' },
+        { code: 'IQ', name: 'Iraq', flag: '🇮🇶', phone: '+964', lang: 'Arabic', script: 'Arabic' },
+        { code: 'SY', name: 'Syria', flag: '🇸🇾', phone: '+963', lang: 'Arabic', script: 'Arabic' },
+        { code: 'JO', name: 'Jordan', flag: '🇯🇴', phone: '+962', lang: 'Arabic', script: 'Arabic' },
+        { code: 'LB', name: 'Lebanon', flag: '🇱🇧', phone: '+961', lang: 'Arabic', script: 'Arabic' },
+        { code: 'IL', name: 'Israel', flag: '🇮🇱', phone: '+972', lang: 'Hebrew', script: 'Hebrew' },
+        { code: 'EG', name: 'Egypt', flag: '🇪🇬', phone: '+20', lang: 'Arabic', script: 'Arabic' },
+        { code: 'NG', name: 'Nigeria', flag: '🇳🇬', phone: '+234', lang: 'English', script: 'Latin' },
+        { code: 'ZA', name: 'South Africa', flag: '🇿🇦', phone: '+27', lang: 'English/Zulu', script: 'Latin' },
+        { code: 'KE', name: 'Kenya', flag: '🇰🇪', phone: '+254', lang: 'Swahili', script: 'Latin' },
+        { code: 'ET', name: 'Ethiopia', flag: '🇪🇹', phone: '+251', lang: 'Amharic', script: 'Ethiopic' },
+        { code: 'GH', name: 'Ghana', flag: '🇬🇭', phone: '+233', lang: 'English', script: 'Latin' },
+        { code: 'MA', name: 'Morocco', flag: '🇲🇦', phone: '+212', lang: 'Arabic', script: 'Arabic' },
+        { code: 'DZ', name: 'Algeria', flag: '🇩🇿', phone: '+213', lang: 'Arabic', script: 'Arabic' },
+        { code: 'TN', name: 'Tunisia', flag: '🇹🇳', phone: '+216', lang: 'Arabic', script: 'Arabic' },
+        { code: 'LY', name: 'Libya', flag: '🇱🇾', phone: '+218', lang: 'Arabic', script: 'Arabic' },
+        { code: 'SD', name: 'Sudan', flag: '🇸🇩', phone: '+249', lang: 'Arabic', script: 'Arabic' },
+        { code: 'NL', name: 'Netherlands', flag: '🇳🇱', phone: '+31', lang: 'Dutch', script: 'Latin' },
+        { code: 'BE', name: 'Belgium', flag: '🇧🇪', phone: '+32', lang: 'Dutch/French', script: 'Latin' },
+        { code: 'SE', name: 'Sweden', flag: '🇸🇪', phone: '+46', lang: 'Swedish', script: 'Latin' },
+        { code: 'NO', name: 'Norway', flag: '🇳🇴', phone: '+47', lang: 'Norwegian', script: 'Latin' },
+        { code: 'DK', name: 'Denmark', flag: '🇩🇰', phone: '+45', lang: 'Danish', script: 'Latin' },
+        { code: 'FI', name: 'Finland', flag: '🇫🇮', phone: '+358', lang: 'Finnish', script: 'Latin' },
+        { code: 'PL', name: 'Poland', flag: '🇵🇱', phone: '+48', lang: 'Polish', script: 'Latin' },
+        { code: 'UA', name: 'Ukraine', flag: '🇺🇦', phone: '+380', lang: 'Ukrainian', script: 'Cyrillic' },
+        { code: 'RO', name: 'Romania', flag: '🇷🇴', phone: '+40', lang: 'Romanian', script: 'Latin' },
+        { code: 'CZ', name: 'Czech Republic', flag: '🇨🇿', phone: '+420', lang: 'Czech', script: 'Latin' },
+        { code: 'GR', name: 'Greece', flag: '🇬🇷', phone: '+30', lang: 'Greek', script: 'Greek' },
+        { code: 'HU', name: 'Hungary', flag: '🇭🇺', phone: '+36', lang: 'Hungarian', script: 'Latin' },
+        { code: 'AT', name: 'Austria', flag: '🇦🇹', phone: '+43', lang: 'German', script: 'Latin' },
+        { code: 'CH', name: 'Switzerland', flag: '🇨🇭', phone: '+41', lang: 'German/French/Italian', script: 'Latin' },
+        { code: 'IE', name: 'Ireland', flag: '🇮🇪', phone: '+353', lang: 'English/Irish', script: 'Latin' },
+        { code: 'NZ', name: 'New Zealand', flag: '🇳🇿', phone: '+64', lang: 'English', script: 'Latin' },
+        { code: 'AF', name: 'Afghanistan', flag: '🇦🇫', phone: '+93', lang: 'Pashto/Dari', script: 'Arabic' },
+        { code: 'AM', name: 'Armenia', flag: '🇦🇲', phone: '+374', lang: 'Armenian', script: 'Armenian' },
+        { code: 'AZ', name: 'Azerbaijan', flag: '🇦🇿', phone: '+994', lang: 'Azerbaijani', script: 'Latin' },
+        { code: 'BG', name: 'Bulgaria', flag: '🇧🇬', phone: '+359', lang: 'Bulgarian', script: 'Cyrillic' },
+        { code: 'KH', name: 'Cambodia', flag: '🇰🇭', phone: '+855', lang: 'Khmer', script: 'Khmer' },
+        { code: 'HR', name: 'Croatia', flag: '🇭🇷', phone: '+385', lang: 'Croatian', script: 'Latin' },
+        { code: 'CY', name: 'Cyprus', flag: '🇨🇾', phone: '+357', lang: 'Greek/Turkish', script: 'Greek/Latin' },
+        { code: 'EE', name: 'Estonia', flag: '🇪🇪', phone: '+372', lang: 'Estonian', script: 'Latin' },
+        { code: 'GE', name: 'Georgia', flag: '🇬🇪', phone: '+995', lang: 'Georgian', script: 'Georgian' },
+        { code: 'IS', name: 'Iceland', flag: '🇮🇸', phone: '+354', lang: 'Icelandic', script: 'Latin' },
+        { code: 'KZ', name: 'Kazakhstan', flag: '🇰🇿', phone: '+7', lang: 'Kazakh', script: 'Cyrillic' },
+        { code: 'KG', name: 'Kyrgyzstan', flag: '🇰🇬', phone: '+996', lang: 'Kyrgyz', script: 'Cyrillic' },
+        { code: 'LA', name: 'Laos', flag: '🇱🇦', phone: '+856', lang: 'Lao', script: 'Lao' },
+        { code: 'LV', name: 'Latvia', flag: '🇱🇻', phone: '+371', lang: 'Latvian', script: 'Latin' },
+        { code: 'LT', name: 'Lithuania', flag: '🇱🇹', phone: '+370', lang: 'Lithuanian', script: 'Latin' },
+        { code: 'LU', name: 'Luxembourg', flag: '🇱🇺', phone: '+352', lang: 'Luxembourgish', script: 'Latin' },
+        { code: 'MT', name: 'Malta', flag: '🇲🇹', phone: '+356', lang: 'Maltese', script: 'Latin' },
+        { code: 'MD', name: 'Moldova', flag: '🇲🇩', phone: '+373', lang: 'Romanian', script: 'Latin' },
+        { code: 'MC', name: 'Monaco', flag: '🇲🇨', phone: '+377', lang: 'French', script: 'Latin' },
+        { code: 'MN', name: 'Mongolia', flag: '🇲🇳', phone: '+976', lang: 'Mongolian', script: 'Cyrillic' },
+        { code: 'ME', name: 'Montenegro', flag: '🇲🇪', phone: '+382', lang: 'Montenegrin', script: 'Latin/Cyrillic' },
+        { code: 'MK', name: 'North Macedonia', flag: '🇲🇰', phone: '+389', lang: 'Macedonian', script: 'Cyrillic' },
+        { code: 'RS', name: 'Serbia', flag: '🇷🇸', phone: '+381', lang: 'Serbian', script: 'Cyrillic/Latin' },
+        { code: 'SK', name: 'Slovakia', flag: '🇸🇰', phone: '+421', lang: 'Slovak', script: 'Latin' },
+        { code: 'SI', name: 'Slovenia', flag: '🇸🇮', phone: '+386', lang: 'Slovenian', script: 'Latin' },
+        { code: 'TJ', name: 'Tajikistan', flag: '🇹🇯', phone: '+992', lang: 'Tajik', script: 'Cyrillic' },
+        { code: 'TM', name: 'Turkmenistan', flag: '🇹🇲', phone: '+993', lang: 'Turkmen', script: 'Latin' },
+        { code: 'UZ', name: 'Uzbekistan', flag: '🇺🇿', phone: '+998', lang: 'Uzbek', script: 'Latin/Cyrillic' },
+        { code: 'YE', name: 'Yemen', flag: '🇾🇪', phone: '+967', lang: 'Arabic', script: 'Arabic' },
+        { code: 'PS', name: 'Palestine', flag: '🇵🇸', phone: '+970', lang: 'Arabic', script: 'Arabic' },
+        { code: 'AL', name: 'Albania', flag: '🇦🇱', phone: '+355', lang: 'Albanian', script: 'Latin' },
+        { code: 'BA', name: 'Bosnia and Herzegovina', flag: '🇧🇦', phone: '+387', lang: 'Bosnian', script: 'Latin/Cyrillic' },
+        { code: 'CR', name: 'Costa Rica', flag: '🇨🇷', phone: '+506', lang: 'Spanish', script: 'Latin' },
+        { code: 'CU', name: 'Cuba', flag: '🇨🇺', phone: '+53', lang: 'Spanish', script: 'Latin' },
+        { code: 'DO', name: 'Dominican Republic', flag: '🇩🇴', phone: '+1', lang: 'Spanish', script: 'Latin' },
+        { code: 'EC', name: 'Ecuador', flag: '🇪🇨', phone: '+593', lang: 'Spanish', script: 'Latin' },
+        { code: 'GT', name: 'Guatemala', flag: '🇬🇹', phone: '+502', lang: 'Spanish', script: 'Latin' },
+        { code: 'HN', name: 'Honduras', flag: '🇭🇳', phone: '+504', lang: 'Spanish', script: 'Latin' },
+        { code: 'NI', name: 'Nicaragua', flag: '🇳🇮', phone: '+505', lang: 'Spanish', script: 'Latin' },
+        { code: 'PA', name: 'Panama', flag: '🇵🇦', phone: '+507', lang: 'Spanish', script: 'Latin' },
+        { code: 'PY', name: 'Paraguay', flag: '🇵🇾', phone: '+595', lang: 'Spanish', script: 'Latin' },
+        { code: 'SV', name: 'El Salvador', flag: '🇸🇻', phone: '+503', lang: 'Spanish', script: 'Latin' },
+        { code: 'UY', name: 'Uruguay', flag: '🇺🇾', phone: '+598', lang: 'Spanish', script: 'Latin' },
+        { code: 'BO', name: 'Bolivia', flag: '🇧🇴', phone: '+591', lang: 'Spanish', script: 'Latin' },
+        { code: 'CM', name: 'Cameroon', flag: '🇨🇲', phone: '+237', lang: 'French/English', script: 'Latin' },
+        { code: 'CI', name: "Côte d'Ivoire", flag: '🇨🇮', phone: '+225', lang: 'French', script: 'Latin' },
+        { code: 'CD', name: 'Congo (DRC)', flag: '🇨🇩', phone: '+243', lang: 'French', script: 'Latin' },
+        { code: 'MG', name: 'Madagascar', flag: '🇲🇬', phone: '+261', lang: 'Malagasy', script: 'Latin' },
+        { code: 'ML', name: 'Mali', flag: '🇲🇱', phone: '+223', lang: 'French', script: 'Latin' },
+        { code: 'MZ', name: 'Mozambique', flag: '🇲🇿', phone: '+258', lang: 'Portuguese', script: 'Latin' },
+        { code: 'NE', name: 'Niger', flag: '🇳🇪', phone: '+227', lang: 'French', script: 'Latin' },
+        { code: 'RW', name: 'Rwanda', flag: '🇷🇼', phone: '+250', lang: 'Kinyarwanda', script: 'Latin' },
+        { code: 'SN', name: 'Senegal', flag: '🇸🇳', phone: '+221', lang: 'French', script: 'Latin' },
+        { code: 'SO', name: 'Somalia', flag: '🇸🇴', phone: '+252', lang: 'Somali', script: 'Latin' },
+        { code: 'TZ', name: 'Tanzania', flag: '🇹🇿', phone: '+255', lang: 'Swahili', script: 'Latin' },
+        { code: 'UG', name: 'Uganda', flag: '🇺🇬', phone: '+256', lang: 'English', script: 'Latin' },
+        { code: 'ZM', name: 'Zambia', flag: '🇿🇲', phone: '+260', lang: 'English', script: 'Latin' },
+        { code: 'ZW', name: 'Zimbabwe', flag: '🇿🇼', phone: '+263', lang: 'English', script: 'Latin' },
+        { code: 'AO', name: 'Angola', flag: '🇦🇴', phone: '+244', lang: 'Portuguese', script: 'Latin' },
+        { code: 'BF', name: 'Burkina Faso', flag: '🇧🇫', phone: '+226', lang: 'French', script: 'Latin' },
+        { code: 'BJ', name: 'Benin', flag: '🇧🇯', phone: '+229', lang: 'French', script: 'Latin' },
+        { code: 'BW', name: 'Botswana', flag: '🇧🇼', phone: '+267', lang: 'English', script: 'Latin' },
+        { code: 'CG', name: 'Congo (Republic)', flag: '🇨🇬', phone: '+242', lang: 'French', script: 'Latin' },
+        { code: 'GA', name: 'Gabon', flag: '🇬🇦', phone: '+241', lang: 'French', script: 'Latin' },
+        { code: 'GM', name: 'Gambia', flag: '🇬🇲', phone: '+220', lang: 'English', script: 'Latin' },
+        { code: 'GN', name: 'Guinea', flag: '🇬🇳', phone: '+224', lang: 'French', script: 'Latin' },
+        { code: 'LR', name: 'Liberia', flag: '🇱🇷', phone: '+231', lang: 'English', script: 'Latin' },
+        { code: 'LS', name: 'Lesotho', flag: '🇱🇸', phone: '+266', lang: 'English', script: 'Latin' },
+        { code: 'MR', name: 'Mauritania', flag: '🇲🇷', phone: '+222', lang: 'Arabic', script: 'Arabic' },
+        { code: 'MW', name: 'Malawi', flag: '🇲🇼', phone: '+265', lang: 'English', script: 'Latin' },
+        { code: 'NA', name: 'Namibia', flag: '🇳🇦', phone: '+264', lang: 'English', script: 'Latin' },
+        { code: 'SL', name: 'Sierra Leone', flag: '🇸🇱', phone: '+232', lang: 'English', script: 'Latin' },
+        { code: 'SS', name: 'South Sudan', flag: '🇸🇸', phone: '+211', lang: 'English', script: 'Latin' },
+        { code: 'TD', name: 'Chad', flag: '🇹🇩', phone: '+235', lang: 'French/Arabic', script: 'Latin/Arabic' },
+        { code: 'TG', name: 'Togo', flag: '🇹🇬', phone: '+228', lang: 'French', script: 'Latin' },
+        { code: 'BT', name: 'Bhutan', flag: '🇧🇹', phone: '+975', lang: 'Dzongkha', script: 'Tibetan' },
+        { code: 'MV', name: 'Maldives', flag: '🇲🇻', phone: '+960', lang: 'Dhivehi', script: 'Thaana' },
+        { code: 'FJ', name: 'Fiji', flag: '🇫🇯', phone: '+679', lang: 'English/Fijian', script: 'Latin' },
+        { code: 'PG', name: 'Papua New Guinea', flag: '🇵🇬', phone: '+675', lang: 'English', script: 'Latin' },
+        { code: 'BN', name: 'Brunei', flag: '🇧🇳', phone: '+673', lang: 'Malay', script: 'Latin' },
+        { code: 'KP', name: 'North Korea', flag: '🇰🇵', phone: '+850', lang: 'Korean', script: 'Korean' },
+        { code: 'TL', name: 'Timor-Leste', flag: '🇹🇱', phone: '+670', lang: 'Tetum', script: 'Latin' }
+    ];
 
-        // Name data for major countries
-        const nameData = {
-            BD: {
-                maleFirst: ['Mohammad', 'Abdul', 'Rahim', 'Karim', 'Hasan', 'Rafiq', 'Jamal', 'Kamal', 'Sohel', 'Rashid', 'Tanvir', 'Arif', 'Shakib', 'Tamim', 'Nasir'],
-                femaleFirst: ['Fatema', 'Ayesha', 'Nasrin', 'Jannat', 'Sumaiya', 'Rokeya', 'Shabnam', 'Nusrat', 'Taslima', 'Maliha', 'Sanjida', 'Farzana', 'Nadia', 'Rebecca', 'Samira'],
-                last: ['Hossain', 'Rahman', 'Ahmed', 'Khan', 'Islam', 'Chowdhury', 'Mia', 'Uddin', 'Ali', 'Hasan', 'Siddique', 'Akter', 'Begum', 'Khatun', 'Sarker']
-            },
-            US: {
-                maleFirst: ['James', 'John', 'Robert', 'Michael', 'William', 'David', 'Richard', 'Joseph', 'Thomas', 'Christopher'],
-                femaleFirst: ['Mary', 'Patricia', 'Jennifer', 'Linda', 'Barbara', 'Elizabeth', 'Susan', 'Jessica', 'Sarah', 'Karen'],
-                last: ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez']
-            },
-            GB: {
-                maleFirst: ['Oliver', 'Jack', 'Harry', 'Jacob', 'Charlie', 'Thomas', 'George', 'Oscar', 'James', 'William'],
-                femaleFirst: ['Amelia', 'Olivia', 'Isla', 'Emily', 'Poppy', 'Ava', 'Isabella', 'Jessica', 'Lily', 'Sophie'],
-                last: ['Smith', 'Jones', 'Taylor', 'Brown', 'Williams', 'Wilson', 'Johnson', 'Davies', 'Robinson', 'Wright']
-            },
-            IN: {
-                maleFirst: ['Aarav', 'Arjun', 'Reyansh', 'Mohammed', 'Vihaan', 'Ayaan', 'Sai', 'Rudra', 'Rohan', 'Krishna'],
-                femaleFirst: ['Saanvi', 'Aadhya', 'Diya', 'Ananya', 'Pari', 'Kiara', 'Sara', 'Ira', 'Myra', 'Prisha'],
-                last: ['Sharma', 'Patel', 'Singh', 'Kumar', 'Gupta', 'Jain', 'Shah', 'Reddy', 'Nair', 'Menon']
-            },
-            DE: {
-                maleFirst: ['Lukas', 'Leon', 'Jonas', 'Finn', 'Noah', 'Elias', 'Paul', 'Felix', 'Luis', 'Maximilian'],
-                femaleFirst: ['Sophie', 'Maria', 'Emma', 'Emilia', 'Hannah', 'Anna', 'Lena', 'Leonie', 'Lina', 'Marie'],
-                last: ['Müller', 'Schmidt', 'Schneider', 'Fischer', 'Weber', 'Meyer', 'Wagner', 'Becker', 'Schulz', 'Hoffmann']
-            },
-            FR: {
-                maleFirst: ['Gabriel', 'Adam', 'Raphaël', 'Paul', 'Louis', 'Arthur', 'Jules', 'Hugo', 'Lucas', 'Liam'],
-                femaleFirst: ['Emma', 'Louise', 'Jade', 'Alice', 'Chloé', 'Lina', 'Rose', 'Léa', 'Anna', 'Mila'],
-                last: ['Martin', 'Bernard', 'Dubois', 'Thomas', 'Robert', 'Richard', 'Petit', 'Durand', 'Leroy', 'Moreau']
-            },
-            JP: {
-                maleFirst: ['Haruki', 'Yuki', 'Takumi', 'Ren', 'Sota', 'Yuto', 'Haruto', 'Hiroki', 'Kaito', 'Yuma'],
-                femaleFirst: ['Yui', 'Sakura', 'Hina', 'Miu', 'Rin', 'Aoi', 'Mei', 'Nanami', 'Yuina', 'Kokoro'],
-                last: ['Sato', 'Suzuki', 'Takahashi', 'Tanaka', 'Watanabe', 'Ito', 'Yamamoto', 'Nakamura', 'Kobayashi', 'Kato']
-            }
-        };
-
-        // Default name data for countries without specific data
-        const defaultNameData = {
-            maleFirst: ['Alex', 'Sam', 'Max', 'Leo', 'Ben', 'Tom', 'Dan', 'Jack', 'Ryan', 'Chris'],
-            femaleFirst: ['Emma', 'Lily', 'Ava', 'Mia', 'Zoe', 'Eva', 'Ivy', 'May', 'Amy', 'Ana'],
-            last: ['Anderson', 'Baker', 'Clark', 'Davis', 'Evans', 'Foster', 'Green', 'Harris', 'Irwin', 'Jones']
-        };
-
-        // ==================== STATE ====================
-        let phoneSelectedCountry = allCountries.find(c => c.code === 'BD');
-        let nameSelectedCountry = allCountries.find(c => c.code === 'BD');
-
-        // ==================== TAB SWITCHING ====================
-        function switchTab(tab) {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-
-            if (tab === 'phone') {
-                document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
-                document.getElementById('phone-tab').classList.add('active');
-                document.querySelector('.subtitle').textContent = 'Global phone numbers at your fingertips. Create them in seconds.';
-                document.querySelector('h1').textContent = 'Random Phone Number Generator';
-            } else {
-                document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
-                document.getElementById('name-tab').classList.add('active');
-                document.querySelector('.subtitle').textContent = 'Generate realistic names from 195 countries worldwide.';
-                document.querySelector('h1').textContent = 'Fake Name Generator';
-            }
+    // Name data
+    const nameData = {
+        BD: {
+            maleFirst: ['Mohammad','Abdul','Rahim','Karim','Hasan','Rafiq','Jamal','Kamal','Sohel','Rashid','Tanvir','Arif','Shakib','Tamim','Nasir'],
+            femaleFirst: ['Fatema','Ayesha','Nasrin','Jannat','Sumaiya','Rokeya','Shabnam','Nusrat','Taslima','Maliha','Sanjida','Farzana','Nadia','Rebecca','Samira'],
+            last: ['Hossain','Rahman','Ahmed','Khan','Islam','Chowdhury','Mia','Uddin','Ali','Hasan','Siddique','Akter','Begum','Khatun','Sarker']
+        },
+        US: {
+            maleFirst: ['James','John','Robert','Michael','William','David','Richard','Joseph','Thomas','Christopher'],
+            femaleFirst: ['Mary','Patricia','Jennifer','Linda','Barbara','Elizabeth','Susan','Jessica','Sarah','Karen'],
+            last: ['Smith','Johnson','Williams','Brown','Jones','Garcia','Miller','Davis','Rodriguez','Martinez']
+        },
+        GB: {
+            maleFirst: ['Oliver','Jack','Harry','Jacob','Charlie','Thomas','George','Oscar','James','William'],
+            femaleFirst: ['Amelia','Olivia','Isla','Emily','Poppy','Ava','Isabella','Jessica','Lily','Sophie'],
+            last: ['Smith','Jones','Taylor','Brown','Williams','Wilson','Johnson','Davies','Robinson','Wright']
+        },
+        IN: {
+            maleFirst: ['Aarav','Arjun','Reyansh','Mohammed','Vihaan','Ayaan','Sai','Rudra','Rohan','Krishna'],
+            femaleFirst: ['Saanvi','Aadhya','Diya','Ananya','Pari','Kiara','Sara','Ira','Myra','Prisha'],
+            last: ['Sharma','Patel','Singh','Kumar','Gupta','Jain','Shah','Reddy','Nair','Menon']
+        },
+        DE: {
+            maleFirst: ['Lukas','Leon','Jonas','Finn','Noah','Elias','Paul','Felix','Luis','Maximilian'],
+            femaleFirst: ['Sophie','Maria','Emma','Emilia','Hannah','Anna','Lena','Leonie','Lina','Marie'],
+            last: ['Müller','Schmidt','Schneider','Fischer','Weber','Meyer','Wagner','Becker','Schulz','Hoffmann']
+        },
+        FR: {
+            maleFirst: ['Gabriel','Adam','Raphaël','Paul','Louis','Arthur','Jules','Hugo','Lucas','Liam'],
+            femaleFirst: ['Emma','Louise','Jade','Alice','Chloé','Lina','Rose','Léa','Anna','Mila'],
+            last: ['Martin','Bernard','Dubois','Thomas','Robert','Richard','Petit','Durand','Leroy','Moreau']
+        },
+        JP: {
+            maleFirst: ['Haruki','Yuki','Takumi','Ren','Sota','Yuto','Haruto','Hiroki','Kaito','Yuma'],
+            femaleFirst: ['Yui','Sakura','Hina','Miu','Rin','Aoi','Mei','Nanami','Yuina','Kokoro'],
+            last: ['Sato','Suzuki','Takahashi','Tanaka','Watanabe','Ito','Yamamoto','Nakamura','Kobayashi','Kato']
         }
+    };
 
-        // ==================== PHONE GENERATOR ====================
-        function togglePhoneDropdown() {
-            const dd = document.getElementById('phoneCountryDropdown');
-            const selector = document.getElementById('phoneCountrySelector');
-            dd.classList.toggle('show');
-            selector.classList.toggle('open');
+    const defaultNameData = {
+        maleFirst: ['Alex','Sam','Max','Leo','Ben','Tom','Dan','Jack','Ryan','Chris'],
+        femaleFirst: ['Emma','Lily','Ava','Mia','Zoe','Eva','Ivy','May','Amy','Ana'],
+        last: ['Anderson','Baker','Clark','Davis','Evans','Foster','Green','Harris','Irwin','Jones']
+    };
+
+    // ==================== STATE ====================
+    let phoneSelectedCountry = allCountries[0]; // BD
+    let nameSelectedCountry = allCountries[0];  // BD
+
+    // ==================== HELPER: find country by code ====================
+    function findCountry(code) {
+        return allCountries.find(function(c) { return c.code === code; });
+    }
+
+    // ==================== TAB SWITCHING ====================
+    document.getElementById('tabPhoneBtn').addEventListener('click', function() {
+        document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+        document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
+        this.classList.add('active');
+        document.getElementById('phone-tab').classList.add('active');
+        document.querySelector('.subtitle').textContent = 'Global phone numbers at your fingertips. Create them in seconds.';
+        document.querySelector('h1').textContent = 'Random Phone Number Generator';
+    });
+
+    document.getElementById('tabNameBtn').addEventListener('click', function() {
+        document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+        document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
+        this.classList.add('active');
+        document.getElementById('name-tab').classList.add('active');
+        document.querySelector('.subtitle').textContent = 'Generate realistic names from 195 countries worldwide.';
+        document.querySelector('h1').textContent = 'Fake Name Generator';
+    });
+
+    // ==================== PHONE GENERATOR ====================
+    function togglePhoneDropdown() {
+        var dd = document.getElementById('phoneCountryDropdown');
+        var sel = document.getElementById('phoneCountrySelector');
+        var isOpen = dd.classList.contains('show');
+        // Close name dropdown if open
+        document.getElementById('nameCountryDropdown').classList.remove('show');
+        document.getElementById('nameCountrySelector').classList.remove('open');
+        if (isOpen) {
+            dd.classList.remove('show');
+            sel.classList.remove('open');
+        } else {
+            dd.classList.add('show');
+            sel.classList.add('open');
         }
+    }
 
-        function selectPhoneCountry(country) {
-            phoneSelectedCountry = country;
-            document.getElementById('phoneFlagIcon').textContent = country.flag;
-            document.getElementById('phoneCountryName').textContent = country.name;
-            document.getElementById('phoneCountryDropdown').classList.remove('show');
-            document.getElementById('phoneCountrySelector').classList.remove('open');
-            document.getElementById('phoneResultsHeading').textContent = `Search for '${country.name}'`;
-            generatePhoneNumbers();
-        }
+    document.getElementById('phoneCountrySelector').addEventListener('click', function(e) {
+        e.stopPropagation();
+        togglePhoneDropdown();
+    });
 
-        function buildPhoneDropdown() {
-            const dd = document.getElementById('phoneCountryDropdown');
-            dd.innerHTML = allCountries.map(c => `
-                <div class="country-option ${c.code === phoneSelectedCountry.code ? 'selected' : ''}" 
-                     onclick="selectPhoneCountry(allCountries.find(x=>x.code==='${c.code}'))">
-                    <span class="flag-emoji">${c.flag}</span>
-                    <span>${c.name} (${c.phone})</span>
-                </div>
-            `).join('');
-        }
+    function selectPhoneCountry(country) {
+        phoneSelectedCountry = country;
+        document.getElementById('phoneFlagIcon').textContent = country.flag;
+        document.getElementById('phoneCountryName').textContent = country.name;
+        document.getElementById('phoneCountryDropdown').classList.remove('show');
+        document.getElementById('phoneCountrySelector').classList.remove('open');
+        document.getElementById('phoneResultsHeading').textContent = "Search for '" + country.name + "'";
+        generatePhoneNumbers();
+    }
 
-        function generatePhoneNumbers() {
-            const country = phoneSelectedCountry;
-            document.getElementById('phoneResultsHeading').textContent = `Search for '${country.name}'`;
+    function buildPhoneDropdown() {
+        var dd = document.getElementById('phoneCountryDropdown');
+        var html = '';
+        allCountries.forEach(function(c) {
+            var selClass = (c.code === phoneSelectedCountry.code) ? ' selected' : '';
+            html += '<div class="country-option' + selClass + '" data-code="' + c.code + '">';
+            html += '<span class="flag-emoji">' + c.flag + '</span>';
+            html += '<span>' + c.name + ' (' + c.phone + ')</span>';
+            html += '</div>';
+        });
+        dd.innerHTML = html;
 
-            const numbers = [];
-            const prefix = country.phone.replace('+', '');
-            for (let i = 0; i < 6; i++) {
-                let num = '';
-                const lengths = { BD: 10, US: 10, GB: 10, IN: 10, default: 9 };
-                const len = lengths[country.code] || lengths.default;
-                for (let j = 0; j < len; j++) {
-                    num += Math.floor(Math.random() * 10);
-                }
-                numbers.push(`+${prefix} ${num}`);
-            }
-
-            const table = document.getElementById('phoneResultsTable');
-            table.innerHTML = `
-                <table class="results-table">
-                    <tbody>
-                        <tr>
-                            ${numbers.slice(0, 3).map((n, i) => `
-                                <td>
-                                    <div class="result-cell">
-                                        <span class="result-text" id="phoneNum${i}">${n}</span>
-                                        <button class="copy-btn" onclick="copyPhone('phoneNum${i}', this)">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16" fill="none">
-                                                <path d="M2.666 10.667C1.933 10.667 1.333 10.067 1.333 9.333V2.667C1.333 1.933 1.933 1.333 2.666 1.333h6.667c.733 0 1.333.6 1.333 1.334M6.667 5.333h6.667c.736 0 1.333.597 1.333 1.334v6.666c0 .737-.597 1.334-1.333 1.334H6.667a1.333 1.333 0 0 1-1.334-1.334V6.667c0-.737.597-1.334 1.334-1.334z" stroke="#474E5A" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>
-                                            Copy
-                                        </button>
-                                    </div>
-                                </td>
-                            `).join('')}
-                        </tr>
-                        <tr>
-                            ${numbers.slice(3, 6).map((n, i) => `
-                                <td>
-                                    <div class="result-cell">
-                                        <span class="result-text" id="phoneNum${i + 3}">${n}</span>
-                                        <button class="copy-btn" onclick="copyPhone('phoneNum${i + 3}', this)">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16" fill="none">
-                                                <path d="M2.666 10.667C1.933 10.667 1.333 10.067 1.333 9.333V2.667C1.333 1.933 1.933 1.333 2.666 1.333h6.667c.733 0 1.333.6 1.333 1.334M6.667 5.333h6.667c.736 0 1.333.597 1.333 1.334v6.666c0 .737-.597 1.334-1.333 1.334H6.667a1.333 1.333 0 0 1-1.334-1.334V6.667c0-.737.597-1.334 1.334-1.334z" stroke="#474E5A" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>
-                                            Copy
-                                        </button>
-                                    </div>
-                                </td>
-                            `).join('')}
-                        </tr>
-                    </tbody>
-                </table>
-            `;
-        }
-
-        function copyPhone(elementId, btn) {
-            const text = document.getElementById(elementId).textContent;
-            navigator.clipboard.writeText(text).then(() => {
-                btn.classList.add('copied');
-                btn.innerHTML = '✅ Copied!';
-                setTimeout(() => {
-                    btn.classList.remove('copied');
-                    btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2.666 10.667C1.933 10.667 1.333 10.067 1.333 9.333V2.667C1.333 1.933 1.933 1.333 2.666 1.333h6.667c.733 0 1.333.6 1.333 1.334M6.667 5.333h6.667c.736 0 1.333.597 1.333 1.334v6.666c0 .737-.597 1.334-1.333 1.334H6.667a1.333 1.333 0 0 1-1.334-1.334V6.667c0-.737.597-1.334 1.334-1.334z" stroke="#474E5A" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg> Copy`;
-                }, 2000);
+        // Add click events to each option
+        var options = dd.querySelectorAll('.country-option');
+        options.forEach(function(opt) {
+            opt.addEventListener('click', function(e) {
+                e.stopPropagation();
+                var code = this.getAttribute('data-code');
+                var country = findCountry(code);
+                if (country) selectPhoneCountry(country);
             });
-        }
+        });
+    }
 
-        function buildQuickPhoneCountries() {
-            const quickCodes = ['US', 'CA', 'GB', 'AU', 'PH', 'FR', 'ID', 'NG', 'DE', 'IN', 'SA', 'AE'];
-            const container = document.getElementById('quickPhoneCountries');
-            container.innerHTML = quickCodes.map(code => {
-                const c = allCountries.find(x => x.code === code);
-                return c ? `<button class="quick-country-btn" onclick="selectPhoneCountry(allCountries.find(x=>x.code==='${code}'))">
-                    <span class="flag-emoji">${c.flag}</span> ${c.name} (${c.phone})
-                </button>` : '';
-            }).join('');
-        }
+    function generatePhoneNumbers() {
+        var country = phoneSelectedCountry;
+        document.getElementById('phoneResultsHeading').textContent = "Search for '" + country.name + "'";
 
-        // ==================== NAME GENERATOR ====================
-        function toggleNameDropdown() {
-            const dd = document.getElementById('nameCountryDropdown');
-            const selector = document.getElementById('nameCountrySelector');
-            dd.classList.toggle('show');
-            selector.classList.toggle('open');
-        }
-
-        function selectNameCountry(country) {
-            nameSelectedCountry = country;
-            document.getElementById('nameFlagIcon').textContent = country.flag;
-            document.getElementById('nameCountryName').textContent = country.name;
-            document.getElementById('nameCountryDropdown').classList.remove('show');
-            document.getElementById('nameCountrySelector').classList.remove('open');
-            generateName();
-        }
-
-        function buildNameDropdown() {
-            const dd = document.getElementById('nameCountryDropdown');
-            dd.innerHTML = allCountries.map(c => `
-                <div class="country-option ${c.code === nameSelectedCountry.code ? 'selected' : ''}" 
-                     onclick="selectNameCountry(allCountries.find(x=>x.code==='${c.code}'))">
-                    <span class="flag-emoji">${c.flag}</span>
-                    <span>${c.name} (${c.lang})</span>
-                </div>
-            `).join('');
-        }
-
-        function generateName() {
-            const country = nameSelectedCountry;
-            const gender = document.getElementById('genderSelect').value;
-
-            let selectedGender = gender;
-            if (gender === 'random') {
-                selectedGender = Math.random() < 0.5 ? 'male' : 'female';
+        var numbers = [];
+        var prefix = country.phone.replace('+', '');
+        var lengths = { BD: 10, US: 10, GB: 10, IN: 10 };
+        var len = lengths[country.code] || 9;
+        for (var i = 0; i < 6; i++) {
+            var num = '';
+            for (var j = 0; j < len; j++) {
+                num += Math.floor(Math.random() * 10);
             }
-
-            const cData = nameData[country.code] || defaultNameData;
-            const firstNames = selectedGender === 'male' ? cData.maleFirst : cData.femaleFirst;
-            const lastNames = cData.last;
-
-            const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
-            const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-            const fullName = `${firstName} ${lastName}`;
-
-            document.getElementById('generatedName').textContent = fullName;
-            document.getElementById('nameDetails').innerHTML = `
-                <strong>Country:</strong> ${country.name} ${country.flag}<br>
-                <strong>Language:</strong> ${country.lang}<br>
-                <strong>Script:</strong> ${country.script}<br>
-                <strong>Gender:</strong> ${selectedGender.charAt(0).toUpperCase() + selectedGender.slice(1)}
-            `;
-            document.getElementById('nameCopyBtn').style.display = 'inline-block';
-            document.getElementById('nameCopyBtn').classList.remove('copied');
-            document.getElementById('nameCopyBtn').innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2.666 10.667C1.933 10.667 1.333 10.067 1.333 9.333V2.667C1.333 1.933 1.933 1.333 2.666 1.333h6.667c.733 0 1.333.6 1.333 1.334M6.667 5.333h6.667c.736 0 1.333.597 1.333 1.334v6.666c0 .737-.597 1.334-1.333 1.334H6.667a1.333 1.333 0 0 1-1.334-1.334V6.667c0-.737.597-1.334 1.334-1.334z" stroke="#474E5A" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg> Copy Name`;
+            numbers.push('+' + prefix + ' ' + num);
         }
 
-        function copyName() {
-            const name = document.getElementById('generatedName').textContent;
-            navigator.clipboard.writeText(name).then(() => {
-                const btn = document.getElementById('nameCopyBtn');
-                btn.classList.add('copied');
-                btn.innerHTML = '✅ Copied!';
-                setTimeout(() => {
-                    btn.classList.remove('copied');
-                    btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2.666 10.667C1.933 10.667 1.333 10.067 1.333 9.333V2.667C1.333 1.933 1.933 1.333 2.666 1.333h6.667c.733 0 1.333.6 1.333 1.334M6.667 5.333h6.667c.736 0 1.333.597 1.333 1.334v6.666c0 .737-.597 1.334-1.333 1.334H6.667a1.333 1.333 0 0 1-1.334-1.334V6.667c0-.737.597-1.334 1.334-1.334z" stroke="#474E5A" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg> Copy Name`;
-            }, 2000);
+        // Build table with event delegation
+        var tableDiv = document.getElementById('phoneResultsTable');
+        var html = '<table class="results-table"><tbody><tr>';
+        for (var k = 0; k < 3; k++) {
+            html += '<td><div class="result-cell">';
+            html += '<span class="result-text">' + numbers[k] + '</span>';
+            html += '<button class="copy-btn" data-phone="' + numbers[k].replace(/"/g, '&quot;') + '">';
+            html += '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2.666 10.667C1.933 10.667 1.333 10.067 1.333 9.333V2.667C1.333 1.933 1.933 1.333 2.666 1.333h6.667c.733 0 1.333.6 1.333 1.334M6.667 5.333h6.667c.736 0 1.333.597 1.333 1.334v6.666c0 .737-.597 1.334-1.333 1.334H6.667a1.333 1.333 0 0 1-1.334-1.334V6.667c0-.737.597-1.334 1.334-1.334z" stroke="#474E5A" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg> Copy';
+            html += '</button></div></td>';
         }
-
-        function buildQuickNameCountries() {
-            const quickCodes = ['BD', 'US', 'GB', 'IN', 'DE', 'FR', 'JP', 'BR', 'RU', 'CN', 'SA', 'AU'];
-            const container = document.getElementById('quickNameCountries');
-            container.innerHTML = quickCodes.map(code => {
-                const c = allCountries.find(x => x.code === code);
-                return c ? `<button class="quick-country-btn" onclick="selectNameCountry(allCountries.find(x=>x.code==='${code}'))">
-                    <span class="flag-emoji">${c.flag}</span> ${c.name}
-                </button>` : '';
-            }).join('');
+        html += '</tr><tr>';
+        for (var m = 3; m < 6; m++) {
+            html += '<td><div class="result-cell">';
+            html += '<span class="result-text">' + numbers[m] + '</span>';
+            html += '<button class="copy-btn" data-phone="' + numbers[m].replace(/"/g, '&quot;') + '">';
+            html += '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2.666 10.667C1.933 10.667 1.333 10.067 1.333 9.333V2.667C1.333 1.933 1.933 1.333 2.666 1.333h6.667c.733 0 1.333.6 1.333 1.334M6.667 5.333h6.667c.736 0 1.333.597 1.333 1.334v6.666c0 .737-.597 1.334-1.333 1.334H6.667a1.333 1.333 0 0 1-1.334-1.334V6.667c0-.737.597-1.334 1.334-1.334z" stroke="#474E5A" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg> Copy';
+            html += '</button></div></td>';
         }
+        html += '</tr></tbody></table>';
+        tableDiv.innerHTML = html;
 
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.country-selector-wrapper')) {
-                document.getElementById('phoneCountryDropdown').classList.remove('show');
-                document.getElementById('phoneCountrySelector').classList.remove('open');
-                document.getElementById('nameCountryDropdown').classList.remove('show');
-                document.getElementById('nameCountrySelector').classList.remove('open');
+        // Add click events to copy buttons
+        var copyBtns = tableDiv.querySelectorAll('.copy-btn');
+        copyBtns.forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                var phone = this.getAttribute('data-phone');
+                navigator.clipboard.writeText(phone).then(function() {
+                    btn.classList.add('copied');
+                    btn.innerHTML = '✅ Copied!';
+                    setTimeout(function() {
+                        btn.classList.remove('copied');
+                        btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2.666 10.667C1.933 10.667 1.333 10.067 1.333 9.333V2.667C1.333 1.933 1.933 1.333 2.666 1.333h6.667c.733 0 1.333.6 1.333 1.334M6.667 5.333h6.667c.736 0 1.333.597 1.333 1.334v6.666c0 .737-.597 1.334-1.333 1.334H6.667a1.333 1.333 0 0 1-1.334-1.334V6.667c0-.737.597-1.334 1.334-1.334z" stroke="#474E5A" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg> Copy';
+                    }, 2000);
+                });
+            });
+        });
+    }
+
+    // Generate button click
+    document.getElementById('phoneGenerateBtn').addEventListener('click', function() {
+        generatePhoneNumbers();
+    });
+
+    function buildQuickPhoneCountries() {
+        var quickCodes = ['US','CA','GB','AU','PH','FR','ID','NG','DE','IN','SA','AE'];
+        var container = document.getElementById('quickPhoneCountries');
+        var html = '';
+        quickCodes.forEach(function(code) {
+            var c = findCountry(code);
+            if (c) {
+                html += '<button class="quick-country-btn" data-code="' + c.code + '">';
+                html += '<span class="flag-emoji">' + c.flag + '</span> ' + c.name + ' (' + c.phone + ')';
+                html += '</button>';
             }
         });
+        container.innerHTML = html;
 
-        // ==================== INIT ====================
-        function init() {
-            buildPhoneDropdown();
-            buildNameDropdown();
-            buildQuickPhoneCountries();
-            buildQuickNameCountries();
-            generatePhoneNumbers();
-            generateName();
+        var btns = container.querySelectorAll('.quick-country-btn');
+        btns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var code = this.getAttribute('data-code');
+                var country = findCountry(code);
+                if (country) selectPhoneCountry(country);
+            });
+        });
+    }
+
+    // ==================== NAME GENERATOR ====================
+    function toggleNameDropdown() {
+        var dd = document.getElementById('nameCountryDropdown');
+        var sel = document.getElementById('nameCountrySelector');
+        var isOpen = dd.classList.contains('show');
+        // Close phone dropdown if open
+        document.getElementById('phoneCountryDropdown').classList.remove('show');
+        document.getElementById('phoneCountrySelector').classList.remove('open');
+        if (isOpen) {
+            dd.classList.remove('show');
+            sel.classList.remove('open');
+        } else {
+            dd.classList.add('show');
+            sel.classList.add('open');
+        }
+    }
+
+    document.getElementById('nameCountrySelector').addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleNameDropdown();
+    });
+
+    function selectNameCountry(country) {
+        nameSelectedCountry = country;
+        document.getElementById('nameFlagIcon').textContent = country.flag;
+        document.getElementById('nameCountryName').textContent = country.name;
+        document.getElementById('nameCountryDropdown').classList.remove('show');
+        document.getElementById('nameCountrySelector').classList.remove('open');
+        generateName();
+    }
+
+    function buildNameDropdown() {
+        var dd = document.getElementById('nameCountryDropdown');
+        var html = '';
+        allCountries.forEach(function(c) {
+            var selClass = (c.code === nameSelectedCountry.code) ? ' selected' : '';
+            html += '<div class="country-option' + selClass + '" data-code="' + c.code + '">';
+            html += '<span class="flag-emoji">' + c.flag + '</span>';
+            html += '<span>' + c.name + ' (' + c.lang + ')</span>';
+            html += '</div>';
+        });
+        dd.innerHTML = html;
+
+        var options = dd.querySelectorAll('.country-option');
+        options.forEach(function(opt) {
+            opt.addEventListener('click', function(e) {
+                e.stopPropagation();
+                var code = this.getAttribute('data-code');
+                var country = findCountry(code);
+                if (country) selectNameCountry(country);
+            });
+        });
+    }
+
+    function generateName() {
+        var country = nameSelectedCountry;
+        var gender = document.getElementById('genderSelect').value;
+        var selectedGender = gender;
+        if (gender === 'random') {
+            selectedGender = Math.random() < 0.5 ? 'male' : 'female';
         }
 
-        init();
+        var cData = nameData[country.code] || defaultNameData;
+        var firstNames = selectedGender === 'male' ? cData.maleFirst : cData.femaleFirst;
+        var lastNames = cData.last;
+
+        var firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+        var lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+        var fullName = firstName + ' ' + lastName;
+
+        document.getElementById('generatedName').textContent = fullName;
+        document.getElementById('nameDetails').innerHTML =
+            '<strong>Country:</strong> ' + country.name + ' ' + country.flag + '<br>' +
+            '<strong>Language:</strong> ' + country.lang + '<br>' +
+            '<strong>Script:</strong> ' + country.script + '<br>' +
+            '<strong>Gender:</strong> ' + selectedGender.charAt(0).toUpperCase() + selectedGender.slice(1);
+        document.getElementById('nameCopyBtn').style.display = 'inline-block';
+        document.getElementById('nameCopyBtn').classList.remove('copied');
+        document.getElementById('nameCopyBtn').innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2.666 10.667C1.933 10.667 1.333 10.067 1.333 9.333V2.667C1.333 1.933 1.933 1.333 2.666 1.333h6.667c.733 0 1.333.6 1.333 1.334M6.667 5.333h6.667c.736 0 1.333.597 1.333 1.334v6.666c0 .737-.597 1.334-1.333 1.334H6.667a1.333 1.333 0 0 1-1.334-1.334V6.667c0-.737.597-1.334 1.334-1.334z" stroke="#474E5A" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg> Copy Name';
+    }
+
+    // Generate name button click
+    document.getElementById('nameGenerateBtn').addEventListener('click', function() {
+        generateName();
+    });
+
+    // Copy name button
+    document.getElementById('nameCopyBtn').addEventListener('click', function() {
+        var name = document.getElementById('generatedName').textContent;
+        var btn = this;
+        navigator.clipboard.writeText(name).then(function() {
+            btn.classList.add('copied');
+            btn.innerHTML = '✅ Copied!';
+            setTimeout(function() {
+                btn.classList.remove('copied');
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2.666 10.667C1.933 10.667 1.333 10.067 1.333 9.333V2.667C1.333 1.933 1.933 1.333 2.666 1.333h6.667c.733 0 1.333.6 1.333 1.334M6.667 5.333h6.667c.736 0 1.333.597 1.333 1.334v6.666c0 .737-.597 1.334-1.333 1.334H6.667a1.333 1.333 0 0 1-1.334-1.334V6.667c0-.737.597-1.334 1.334-1.334z" stroke="#474E5A" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg> Copy Name';
+            }, 2000);
+        });
+    });
+
+    function buildQuickNameCountries() {
+        var quickCodes = ['BD','US','GB','IN','DE','FR','JP','BR','RU','CN','SA','AU'];
+        var container = document.getElementById('quickNameCountries');
+        var html = '';
+        quickCodes.forEach(function(code) {
+            var c = findCountry(code);
+            if (c) {
+                html += '<button class="quick-country-btn" data-code="' + c.code + '">';
+                html += '<span class="flag-emoji">' + c.flag + '</span> ' + c.name;
+                html += '</button>';
+            }
+        });
+        container.innerHTML = html;
+
+        var btns = container.querySelectorAll('.quick-country-btn');
+        btns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var code = this.getAttribute('data-code');
+                var country = findCountry(code);
+                if (country) selectNameCountry(country);
+            });
+        });
+    }
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('#phoneCountryWrapper')) {
+            document.getElementById('phoneCountryDropdown').classList.remove('show');
+            document.getElementById('phoneCountrySelector').classList.remove('open');
+        }
+        if (!e.target.closest('#nameCountryWrapper')) {
+            document.getElementById('nameCountryDropdown').classList.remove('show');
+            document.getElementById('nameCountrySelector').classList.remove('open');
+        }
+    });
+
+    // ==================== INIT ====================
+    function init() {
+        buildPhoneDropdown();
+        buildNameDropdown();
+        buildQuickPhoneCountries();
+        buildQuickNameCountries();
+        generatePhoneNumbers();
+        generateName();
+    }
+    init();
     </script>
 </body>
 </html>
