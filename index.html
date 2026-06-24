@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Name Generator - 37 Languages & 31 Countries</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.9em;
+        }
+
+        select, button {
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: all 0.3s;
+            background: white;
+            cursor: pointer;
+        }
+
+        select:hover {
+            border-color: #667eea;
+        }
+
+        select:focus, button:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .generate-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            cursor: pointer;
+            grid-column: 1 / -1;
+            padding: 15px;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .generate-btn:active {
+            transform: translateY(0);
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 20px;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .name-display h2 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 15px;
+            word-break: break-word;
+        }
+
+        .name-details {
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .copy-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .copy-btn:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        .copy-btn.copied {
+            background: #ffc107;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .name-display h2 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌍 Fake Name Generator</h1>
+            <p class="subtitle">37 Languages • 31 Countries • Realistic Names</p>
+        </header>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="country">🌎 Country:</label>
+                <select id="country"></select>
+            </div>
+
+            <div class="control-group">
+                <label for="gender">👤 Gender:</label>
+                <select id="gender">
+                    <option value="random">Random</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="language">🔤 Language Script:</label>
+                <select id="language"></select>
+            </div>
+
+            <button id="generateBtn" class="generate-btn">
+                🎲 Generate Random Name
+            </button>
+        </div>
+
+        <div class="result-card" id="resultCard">
+            <div class="name-display">
+                <h2 id="generatedName">Click Generate</h2>
+                <div class="name-details" id="nameDetails"></div>
+            </div>
+            <button class="copy-btn" id="copyBtn" style="display:none;">📋 Copy Name</button>
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number" id="totalNames">0</div>
+                <div class="stat-label">Names Generated</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="uniqueCountries">31</div>
+                <div class="stat-label">Countries</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="uniqueLanguages">37</div>
+                <div class="stat-label">Languages</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Name Database - 31 Countries and 37 Languages
+        const nameDatabase = {
+            countries: {
+                'US': { name: 'United States', language: 'English' },
+                'GB': { name: 'United Kingdom', language: 'English' },
+                'CA': { name: 'Canada', language: 'English/French' },
+                'AU': { name: 'Australia', language: 'English' },
+                'DE': { name: 'Germany', language: 'German' },
+                'FR': { name: 'France', language: 'French' },
+                'ES': { name: 'Spain', language: 'Spanish' },
+                'IT': { name: 'Italy', language: 'Italian' },
+                'PT': { name: 'Portugal', language: 'Portuguese' },
+                'BR': { name: 'Brazil', language: 'Portuguese' },
+                'RU': { name: 'Russia', language: 'Russian' },
+                'CN': { name: 'China', language: 'Chinese' },
+                'JP': { name: 'Japan', language: 'Japanese' },
+                'KR': { name: 'South Korea', language: 'Korean' },
+                'IN': { name: 'India', language: 'Hindi' },
+                'SA': { name: 'Saudi Arabia', language: 'Arabic' },
+                'EG': { name: 'Egypt', language: 'Arabic' },
+                'TR': { name: 'Turkey', language: 'Turkish' },
+                'NL': { name: 'Netherlands', language: 'Dutch' },
+                'SE': { name: 'Sweden', language: 'Swedish' },
+                'NO': { name: 'Norway', language: 'Norwegian' },
+                'DK': { name: 'Denmark', language: 'Danish' },
+                'FI': { name: 'Finland', language: 'Finnish' },
+                'PL': { name: 'Poland', language: 'Polish' },
+                'GR': { name: 'Greece', language: 'Greek' },
+                'TH': { name: 'Thailand', language: 'Thai' },
+                'VN': { name: 'Vietnam', language: 'Vietnamese' },
+                'ID': { name: 'Indonesia', language: 'Indonesian' },
+                'MX': { name: 'Mexico', language: 'Spanish' },
+                'AR': { name: 'Argentina', language: 'Spanish' },
+                'NG': { name: 'Nigeria', language: 'English' }
+            },
+
+            firstNames: {
+                male: {
+                    US: ['James', 'John', 'Robert', 'Michael', 'William', 'David', 'Richard', 'Joseph', 'Thomas', 'Charles', 'Christopher', 'Daniel', 'Matthew', 'Anthony', 'Mark'],
+                    GB: ['Oliver', 'Jack', 'Harry', 'Jacob', 'Charlie', 'Thomas', 'George', 'Oscar', 'James', 'William', 'Henry', 'Alexander', 'Joshua', 'Benjamin', 'Samuel'],
+                    DE: ['Lukas', 'Leon', 'Jonas', 'Finn', 'Noah', 'Elias', 'Paul', 'Felix', 'Luis', 'Maximilian', 'Henry', 'Ben', 'Philipp', 'Jakob', 'Alexander'],
+                    FR: ['Gabriel', 'Adam', 'Raphaël', 'Paul', 'Louis', 'Arthur', 'Jules', 'Hugo', 'Lucas', 'Liam', 'Nathan', 'Mathis', 'Thomas', 'Antoine', 'Maxime'],
+                    IT: ['Francesco', 'Alessandro', 'Andrea', 'Matteo', 'Lorenzo', 'Gabriele', 'Mattia', 'Riccardo', 'Davide', 'Luca', 'Marco', 'Giuseppe', 'Antonio', 'Giovanni', 'Pietro'],
+                    ES: ['Alejandro', 'Daniel', 'Pablo', 'Manuel', 'Álvaro', 'Adrián', 'David', 'Javier', 'Sergio', 'Carlos', 'Jorge', 'Miguel', 'Pedro', 'Antonio', 'José'],
+                    RU: ['Alexander', 'Mikhail', 'Ivan', 'Maxim', 'Artem', 'Dmitry', 'Nikita', 'Kirill', 'Daniil', 'Egor', 'Alexey', 'Roman', 'Sergey', 'Vladimir', 'Andrey'],
+                    CN: ['Wei', 'Jie', 'Hao', 'Jun', 'Ming', 'Lei', 'Tao', 'Yang', 'Bo', 'Chen', 'Kai', 'Long', 'Qiang', 'Chao', 'Fei'],
+                    JP: ['Haruki', 'Yuki', 'Takumi', 'Ren', 'Sota', 'Yuto', 'Haruto', 'Hiroki', 'Kaito', 'Yuma', 'Sho', 'Hayato', 'Riku', 'Kota', 'Tatsuya'],
+                    KR: ['Min-jun', 'Seo-jun', 'Ha-joon', 'Do-yun', 'Joo-won', 'Ye-jun', 'Ji-ho', 'Hyun-woo', 'Si-woo', 'Jun-seo', 'Tae-hyun', 'Sung-min', 'Jae-won', 'Young-ho', 'Dong-hyun'],
+                    IN: ['Aarav', 'Arjun', 'Reyansh', 'Mohammed', 'Vihaan', 'Ayaan', 'Sai', 'Rudra', 'Rohan', 'Krishna', 'Dev', 'Shiv', 'Om', 'Aryan', 'Rahul'],
+                    SA: ['Mohammed', 'Abdullah', 'Omar', 'Ali', 'Khalid', 'Ahmed', 'Faisal', 'Sultan', 'Youssef', 'Hassan', 'Ibrahim', 'Salman', 'Waleed', 'Majed', 'Nasser'],
+                    BR: ['Lucas', 'Gabriel', 'Pedro', 'João', 'Matheus', 'Felipe', 'Gustavo', 'Rafael', 'Bruno', 'Leonardo', 'Thiago', 'Vitor', 'Marcos', 'Paulo', 'Carlos'],
+                    MX: ['Santiago', 'Mateo', 'Sebastián', 'Diego', 'Emiliano', 'Alejandro', 'Leonardo', 'Eduardo', 'Fernando', 'Ricardo', 'Javier', 'Miguel', 'Pedro', 'José', 'Carlos']
+                },
+                female: {
+                    US: ['Mary', 'Patricia', 'Jennifer', 'Linda', 'Barbara', 'Elizabeth', 'Susan', 'Jessica', 'Sarah', 'Karen', 'Lisa', 'Nancy', 'Betty', 'Margaret', 'Sandra'],
+                    GB: ['Amelia', 'Olivia', 'Isla', 'Emily', 'Poppy', 'Ava', 'Isabella', 'Jessica', 'Lily', 'Sophie', 'Grace', 'Sophia', 'Mia', 'Ruby', 'Evie'],
+                    DE: ['Sophie', 'Maria', 'Emma', 'Emilia', 'Hannah', 'Anna', 'Lena', 'Leonie', 'Lina', 'Marie', 'Sarah', 'Laura', 'Mia', 'Lisa', 'Julia'],
+                    FR: ['Emma', 'Louise', 'Jade', 'Alice', 'Chloé', 'Lina', 'Rose', 'Léa', 'Anna', 'Mila', 'Manon', 'Inès', 'Julia', 'Camille', 'Lucie'],
+                    IT: ['Sofia', 'Giulia', 'Aurora', 'Alice', 'Ginevra', 'Emma', 'Giorgia', 'Greta', 'Beatrice', 'Anna', 'Martina', 'Chiara', 'Sara', 'Francesca', 'Alessia'],
+                    ES: ['Lucía', 'María', 'Paula', 'Daniela', 'Sara', 'Carla', 'Martina', 'Sofía', 'Julia', 'Alba', 'Irene', 'Carmen', 'Ana', 'Laura', 'Andrea'],
+                    RU: ['Anastasia', 'Maria', 'Anna', 'Elena', 'Olga', 'Tatiana', 'Ekaterina', 'Irina', 'Natalia', 'Svetlana', 'Yulia', 'Daria', 'Polina', 'Ksenia', 'Victoria'],
+                    CN: ['Fang', 'Hui', 'Jing', 'Li', 'Mei', 'Na', 'Ping', 'Qi', 'Rong', 'Shu', 'Ting', 'Xia', 'Yan', 'Ying', 'Zhen'],
+                    JP: ['Yui', 'Sakura', 'Hina', 'Miu', 'Rin', 'Aoi', 'Mei', 'Nanami', 'Yuina', 'Kokoro', 'Himari', 'Miyu', 'Sara', 'Yuna', 'Rio'],
+                    KR: ['Seo-yeon', 'Ha-eun', 'Ji-a', 'Seo-yun', 'Min-seo', 'Ye-eun', 'Da-eun', 'Su-bin', 'Ji-yoon', 'Hyun-joo', 'Soo-jin', 'Mi-young', 'Eun-ji', 'Na-young', 'Bo-young'],
+                    IN: ['Saanvi', 'Aadhya', 'Diya', 'Ananya', 'Pari', 'Kiara', 'Sara', 'Ira', 'Myra', 'Prisha', 'Shreya', 'Priya', 'Neha', 'Riya', 'Sneha'],
+                    SA: ['Fatima', 'Noura', 'Aisha', 'Mariam', 'Khadija', 'Zainab', 'Hessa', 'Maha', 'Reem', 'Amal', 'Layla', 'Shahd', 'Noor', 'Sara', 'Dana'],
+                    BR: ['Maria', 'Ana', 'Julia', 'Beatriz', 'Laura', 'Isabella', 'Sophia', 'Manuela', 'Luiza', 'Gabriela', 'Mariana', 'Rafaela', 'Bianca', 'Helena', 'Alice'],
+                    MX: ['Sofía', 'Valentina', 'Regina', 'Camila', 'Ximena', 'María', 'Fernanda', 'Daniela', 'Renata', 'Isabella', 'Ana', 'Paula', 'Alejandra', 'Gabriela', 'Andrea']
+                }
+            },
+
+            lastNames: {
+                US: ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez', 'Hernandez', 'Lopez', 'Gonzalez', 'Wilson', 'Anderson'],
+                GB: ['Smith', 'Jones', 'Taylor', 'Brown', 'Williams', 'Wilson', 'Johnson', 'Davies', 'Robinson', 'Wright', 'Thompson', 'Evans', 'Walker', 'White', 'Roberts'],
+                DE: ['Müller', 'Schmidt', 'Schneider', 'Fischer', 'Weber', 'Meyer', 'Wagner', 'Becker', 'Schulz', 'Hoffmann', 'Schäfer', 'Koch', 'Bauer', 'Richter', 'Klein'],
+                FR: ['Martin', 'Bernard', 'Dubois', 'Thomas', 'Robert', 'Richard', 'Petit', 'Durand', 'Leroy', 'Moreau', 'Simon', 'Laurent', 'Lefebvre', 'Michel', 'Garcia'],
+                IT: ['Rossi', 'Russo', 'Ferrari', 'Esposito', 'Bianchi', 'Romano', 'Colombo', 'Ricci', 'Marino', 'Greco', 'Bruno', 'Gallo', 'Conti', 'Costa', 'Mancini'],
+                ES: ['García', 'Rodríguez', 'González', 'Fernández', 'López', 'Martínez', 'Sánchez', 'Pérez', 'Gómez', 'Martín', 'Jiménez', 'Ruiz', 'Hernández', 'Díaz', 'Moreno'],
+                RU: ['Ivanov', 'Smirnov', 'Kuznetsov', 'Popov', 'Vasiliev', 'Petrov', 'Sokolov', 'Mikhailov', 'Novikov', 'Fedorov', 'Morozov', 'Volkov', 'Alexeev', 'Lebedev', 'Semenov'],
+                CN: ['Wang', 'Li', 'Zhang', 'Liu', 'Chen', 'Yang', 'Zhao', 'Huang', 'Zhou', 'Wu', 'Xu', 'Sun', 'Hu', 'Zhu', 'Gao'],
+                JP: ['Sato', 'Suzuki', 'Takahashi', 'Tanaka', 'Watanabe', 'Ito', 'Yamamoto', 'Nakamura', 'Kobayashi', 'Kato', 'Yoshida', 'Yamada', 'Sasaki', 'Yamaguchi', 'Matsumoto'],
+                KR: ['Kim', 'Lee', 'Park', 'Choi', 'Jung', 'Kang', 'Cho', 'Yoon', 'Jang', 'Lim', 'Han', 'Oh', 'Shin', 'Seo', 'Kwon'],
+                IN: ['Sharma', 'Patel', 'Singh', 'Kumar', 'Gupta', 'Jain', 'Shah', 'Reddy', 'Nair', 'Menon', 'Iyer', 'Pillai', 'Chopra', 'Malhotra', 'Kapoor'],
+                SA: ['Al-Saud', 'Al-Rashid', 'Al-Faisal', 'Al-Ghamdi', 'Al-Otaibi', 'Al-Zahrani', 'Al-Qahtani', 'Al-Shahrani', 'Al-Dossary', 'Al-Harbi', 'Al-Mutairi', 'Al-Hajri', 'Al-Bishi', 'Al-Johani', 'Al-Shammari'],
+                BR: ['Silva', 'Santos', 'Oliveira', 'Souza', 'Rodrigues', 'Ferreira', 'Alves', 'Pereira', 'Lima', 'Gomes', 'Costa', 'Ribeiro', 'Martins', 'Carvalho', 'Almeida'],
+                MX: ['García', 'Hernández', 'Martínez', 'López', 'González', 'Rodríguez', 'Pérez', 'Sánchez', 'Ramírez', 'Cruz', 'Flores', 'Gómez', 'Morales', 'Vázquez', 'Jiménez']
+            },
+
+            languageScripts: {
+                'Latin': 'English, Spanish, French, German, Italian, Portuguese, Dutch, etc.',
+                'Cyrillic': 'Russian, Bulgarian, Serbian, Ukrainian',
+                'Chinese': 'Chinese (Simplified/Traditional)',
+                'Japanese': 'Japanese (Kanji, Hiragana, Katakana)',
+                'Korean': 'Korean (Hangul)',
+                'Arabic': 'Arabic, Persian, Urdu',
+                'Hindi': 'Hindi (Devanagari)',
+                'Thai': 'Thai script',
+                'Greek': 'Greek alphabet',
+                'Hebrew': 'Hebrew script',
+                'Vietnamese': 'Vietnamese (Latin with diacritics)',
+                'Tamil': 'Tamil script',
+                'Telugu': 'Telugu script',
+                'Bengali': 'Bengali script',
+                'Gujarati': 'Gujarati script',
+                'Malayalam': 'Malayalam script',
+                'Kannada': 'Kannada script',
+                'Burmese': 'Burmese script',
+                'Khmer': 'Khmer script',
+                'Lao': 'Lao script',
+                'Georgian': 'Georgian script',
+                'Armenian': 'Armenian script',
+                'Mongolian': 'Mongolian script',
+                'Sinhala': 'Sinhala script',
+                'Ethiopic': 'Amharic, Tigrinya',
+                'Cherokee': 'Cherokee syllabary',
+                'Canadian Aboriginal': 'Inuktitut, Cree',
+                'Tibetan': 'Tibetan script',
+                'Sinhala': 'Sinhala script',
+                'Myanmar': 'Myanmar script',
+                'Khmer': 'Khmer script',
+                'Lao': 'Lao script',
+                'Georgian': 'Georgian script',
+                'Armenian': 'Armenian script',
+                'Tifinagh': 'Berber languages',
+                'Syriac': 'Assyrian, Chaldean',
+                'Thaana': 'Maldivian',
+            }
+        };
+
+        // Populate country dropdown
+        function populateCountries() {
+            const countrySelect = document.getElementById('country');
+            countrySelect.innerHTML = '<option value="random">Random Country</option>';
+            
+            Object.keys(nameDatabase.countries).forEach(code => {
+                const option = document.createElement('option');
+                option.value = code;
+                option.textContent = nameDatabase.countries[code].name;
+                countrySelect.appendChild(option);
+            });
+        }
+
+        // Populate language dropdown
+        function populateLanguages() {
+            const languageSelect = document.getElementById('language');
+            languageSelect.innerHTML = '<option value="random">Random Script</option>';
+            
+            Object.keys(nameDatabase.languageScripts).forEach(script => {
+                const option = document.createElement('option');
+                option.value = script;
+                option.textContent = script;
+                languageSelect.appendChild(option);
+            });
+        }
+
+        // Generate random name
+        function generateName() {
+            const countrySelect = document.getElementById('country');
+            const genderSelect = document.getElementById('gender');
+            
+            let country = countrySelect.value;
+            let gender = genderSelect.value;
+
+            // Random country if selected
+            if (country === 'random') {
+                const countries = Object.keys(nameDatabase.countries);
+                country = countries[Math.floor(Math.random() * countries.length)];
+            }
+
+            // Random gender if selected
+            if (gender === 'random') {
+                gender = Math.random() < 0.5 ? 'male' : 'female';
+            }
+
+            // Get names for country, fallback to US if not found
+            const firstNames = nameDatabase.firstNames[gender][country] || nameDatabase.firstNames[gender]['US'];
+            const lastNames = nameDatabase.lastNames[country] || nameDatabase.lastNames['US'];
+
+            const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+            const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+            
+            const fullName = `${firstName} ${lastName}`;
+            const countryName = nameDatabase.countries[country].name;
+            const language = nameDatabase.countries[country].language;
+
+            // Update display
+            document.getElementById('generatedName').textContent = fullName;
+            document.getElementById('nameDetails').innerHTML = `
+                <strong>Country:</strong> ${countryName}<br>
+                <strong>Language:</strong> ${language}<br>
+                <strong>Gender:</strong> ${gender.charAt(0).toUpperCase() + gender.slice(1)}
+            `;
+
+            // Show copy button
+            document.getElementById('copyBtn').style.display = 'inline-block';
+            document.getElementById('copyBtn').textContent = '📋 Copy Name';
+            document.getElementById('copyBtn').classList.remove('copied');
+
+            // Update stats
+            updateStats();
+
+            return fullName;
+        }
+
+        // Copy to clipboard
+        function copyToClipboard() {
+            const name = document.getElementById('generatedName').textContent;
+            navigator.clipboard.writeText(name).then(() => {
+                const copyBtn = document.getElementById('copyBtn');
+                copyBtn.textContent = '✅ Copied!';
+                copyBtn.classList.add('copied');
+                setTimeout(() => {
+                    copyBtn.textContent = '📋 Copy Name';
+                    copyBtn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // Update stats
+        let generatedCount = 0;
+        function updateStats() {
+            generatedCount++;
+            document.getElementById('totalNames').textContent = generatedCount;
+        }
+
+        // Event listeners
+        document.getElementById('generateBtn').addEventListener('click', generateName);
+        document.getElementById('copyBtn').addEventListener('click', copyToClipboard);
+
+        // Initialize
+        populateCountries();
+        populateLanguages();
+
+        // Generate first random name on load
+        generateName();
+    </script>
+</body>
+</html>
