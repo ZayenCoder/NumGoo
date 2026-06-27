@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fake Name & Phone Number Generator - 195 Countries</title>
+    <title>2Fake Name & Phone Number Generator - 195 Countries</title>
     <meta name="description" content="Generate realistic fake names and phone numbers from 195 countries worldwide. Default: Bangladesh">
     <style>
         :root {
@@ -633,29 +633,28 @@
     }
 
     function generatePhoneNumbers() {
-        var country = phoneSelectedCountry;
-        document.getElementById('phoneResultsHeading').textContent = "Search for '" + country.name + "'";
-        var config = getPhoneConfig(country.code);
-        var numbers = [];
-        var countryCode = country.phone;
-        for (var i = 0; i < 6; i++) {
-            var prefix = config.prefixes[Math.floor(Math.random() * config.prefixes.length)];
-            var sub = '';
-            for (var j = 0; j < config.subLen; j++) { sub += Math.floor(Math.random() * 10); }
-            var fullNum = prefix + sub;
-            var formatted = formatPhoneNumber(prefix, sub, config.fmt);
-            numbers.push(countryCode + ' ' + formatted);
-        }
-        var tableDiv = document.getElementById('phoneResultsTable'), html = '<table class="results-table"><tbody><tr>';
-        for (var k = 0; k < 3; k++) { html += '<td><div class="result-cell"><span class="result-text">' + numbers[k] + '</span><button class="copy-btn" data-phone="' + numbers[k].replace(/"/g,'&quot;') + '"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2.666 10.667C1.933 10.667 1.333 10.067 1.333 9.333V2.667C1.333 1.933 1.933 1.333 2.666 1.333h6.667c.733 0 1.333.6 1.333 1.334M6.667 5.333h6.667c.736 0 1.333.597 1.333 1.334v6.666c0 .737-.597 1.334-1.333 1.334H6.667a1.333 1.333 0 0 1-1.334-1.334V6.667c0-.737.597-1.334 1.334-1.334z" stroke="#474E5A" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg> Copy</button></div></td>'; }
-        html += '</tr><tr>';
-        for (var m = 3; m < 6; m++) { html += '<td><div class="result-cell"><span class="result-text">' + numbers[m] + '</span><button class="copy-btn" data-phone="' + numbers[m].replace(/"/g,'&quot;') + '"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2.666 10.667C1.933 10.667 1.333 10.067 1.333 9.333V2.667C1.333 1.933 1.933 1.333 2.666 1.333h6.667c.733 0 1.333.6 1.333 1.334M6.667 5.333h6.667c.736 0 1.333.597 1.333 1.334v6.666c0 .737-.597 1.334-1.333 1.334H6.667a1.333 1.333 0 0 1-1.334-1.334V6.667c0-.737.597-1.334 1.334-1.334z" stroke="#474E5A" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg> Copy</button></div></td>'; }
-        html += '</tr></tbody></table>';
-        tableDiv.innerHTML = html;
-        tableDiv.querySelectorAll('.copy-btn').forEach(function(btn) {
-            btn.addEventListener('click', function(e) { e.stopPropagation(); var phone = this.getAttribute('data-phone'); var b = this; navigator.clipboard.writeText(phone).then(function() { b.classList.add('copied'); b.innerHTML = '✅ Copied!'; setTimeout(function() { b.classList.remove('copied'); b.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2.666 10.667C1.933 10.667 1.333 10.067 1.333 9.333V2.667C1.333 1.933 1.933 1.333 2.666 1.333h6.667c.733 0 1.333.6 1.333 1.334M6.667 5.333h6.667c.736 0 1.333.597 1.333 1.334v6.666c0 .737-.597 1.334-1.333 1.334H6.667a1.333 1.333 0 0 1-1.334-1.334V6.667c0-.737.597-1.334 1.334-1.334z" stroke="#474E5A" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg> Copy'; }, 2000); }); });
-        });
+    var country = phoneSelectedCountry;
+    document.getElementById('phoneResultsHeading').textContent = "Search for '" + country.name + "'";
+    var config = getPhoneConfig(country.code);
+    var numbers = [];
+    var countryCode = country.phone;
+    for (var i = 0; i < 6; i++) {
+        var prefix = config.prefixes[Math.floor(Math.random() * config.prefixes.length)];
+        var sub = '';
+        for (var j = 0; j < config.subLen; j++) { sub += Math.floor(Math.random() * 10); }
+        // DIRECT: country code + space + prefix + sub (NO formatPhoneNumber)
+        numbers.push(countryCode + ' ' + prefix + sub);
     }
+    var tableDiv = document.getElementById('phoneResultsTable'), html = '<table class="results-table"><tbody><tr>';
+    for (var k = 0; k < 3; k++) { html += '<td><div class="result-cell"><span class="result-text">' + numbers[k] + '</span><button class="copy-btn" data-phone="' + numbers[k].replace(/"/g,'&quot;') + '"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2.666 10.667C1.933 10.667 1.333 10.067 1.333 9.333V2.667C1.333 1.933 1.933 1.333 2.666 1.333h6.667c.733 0 1.333.6 1.333 1.334M6.667 5.333h6.667c.736 0 1.333.597 1.333 1.334v6.666c0 .737-.597 1.334-1.333 1.334H6.667a1.333 1.333 0 0 1-1.334-1.334V6.667c0-.737.597-1.334 1.334-1.334z" stroke="#474E5A" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg> Copy</button></div></td>'; }
+    html += '</tr><tr>';
+    for (var m = 3; m < 6; m++) { html += '<td><div class="result-cell"><span class="result-text">' + numbers[m] + '</span><button class="copy-btn" data-phone="' + numbers[m].replace(/"/g,'&quot;') + '"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2.666 10.667C1.933 10.667 1.333 10.067 1.333 9.333V2.667C1.333 1.933 1.933 1.333 2.666 1.333h6.667c.733 0 1.333.6 1.333 1.334M6.667 5.333h6.667c.736 0 1.333.597 1.333 1.334v6.666c0 .737-.597 1.334-1.333 1.334H6.667a1.333 1.333 0 0 1-1.334-1.334V6.667c0-.737.597-1.334 1.334-1.334z" stroke="#474E5A" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg> Copy</button></div></td>'; }
+    html += '</tr></tbody></table>';
+    tableDiv.innerHTML = html;
+    tableDiv.querySelectorAll('.copy-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) { e.stopPropagation(); var phone = this.getAttribute('data-phone'); var b = this; navigator.clipboard.writeText(phone).then(function() { b.classList.add('copied'); b.innerHTML = '✅ Copied!'; setTimeout(function() { b.classList.remove('copied'); b.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2.666 10.667C1.933 10.667 1.333 10.067 1.333 9.333V2.667C1.333 1.933 1.933 1.333 2.666 1.333h6.667c.733 0 1.333.6 1.333 1.334M6.667 5.333h6.667c.736 0 1.333.597 1.333 1.334v6.666c0 .737-.597 1.334-1.333 1.334H6.667a1.333 1.333 0 0 1-1.334-1.334V6.667c0-.737.597-1.334 1.334-1.334z" stroke="#474E5A" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg> Copy'; }, 2000); }); });
+    });
+}
 
     document.getElementById('phoneGenerateBtn').addEventListener('click', generatePhoneNumbers);
 
